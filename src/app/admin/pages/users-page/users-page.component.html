@@ -1,0 +1,46 @@
+<div class="container mx-auto py-2">
+  <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
+    <thead>
+      <tr class="text">
+        <th class="border-spacing-1">id</th>
+        <th class="border-spacing-1">name</th>
+        <th class="border-spacing-1">gender</th>
+        <th class="border-spacing-1">weight</th>
+        <th class="border-spacing-1">height</th>
+        <th class="border-spacing-1">category</th>
+        <th class="border-spacing-1">diet</th>
+        <th class="border-spacing-1">habitatId</th>
+        <th class="border-spacing-1">
+          <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/createAnimal">
+            create
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let animal of animals">
+      <tr class="text">
+        <td class="border-spacing-1">{{ animal.id }}</td>
+        <td class="border-spacing-1">{{ animal.name }}</td>
+        <td class="border-spacing-1">{{ animal.gender }}</td>
+        <td class="border-spacing-1">{{ animal.weight }}</td>
+        <td class="border-spacing-1">{{ animal.height }}</td>
+        <td class="border-spacing-1">{{ animal.category }}</td>
+        <td class="border-spacing-1">{{ animal.diet }}</td>
+        <td class="border-spacing-1">{{ animal.habitatId }}</td>
+        <td>
+          <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/animals/{{animal.id}}">
+            Edit
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            (click)="delete(animal.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
