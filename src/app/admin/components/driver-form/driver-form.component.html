@@ -1,0 +1,53 @@
+<form [formGroup]="driverDataForm" (ngSubmit)="create()"  class="w-full max-w-lg" action="">
+	<div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+            <input type="text" id="name"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                formControlName="name" required [(ngModel)]="driverData.name">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+            <label for="responsibility" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Responsibility</label>
+            <input type="text" id="responsibility"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                formControlName="responsibility" required [(ngModel)]="driverData.responsibility">
+        </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="qualification" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Qualification</label>
+            <input type="number" id="qualification"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                formControlName="qualification" required [(ngModel)]="driverData.qualification">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+            <label for="salary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salary</label>
+            <input type="number" id="salary"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                formControlName="salary" required [(ngModel)]="driverData.salary">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+            <label for="createdAt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CreatedAt</label>
+            <input type="date" id="createdAt"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                formControlName="createdAt" required [(ngModel)]="driverData.createdAt">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+            <label for="updatedAt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">UpdatedAt</label>
+            <input type="date" id="updatedAt"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                formControlName="updatedAt" required [(ngModel)]="driverData.updatedAt">
+        </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/1 px-3">
+            <label for="trips" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trips</label>
+            <input type="text" id="trips"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                formControlName="trips" required [(ngModel)]="driverData.trips">
+        </div>
+    </div>
+  
+	<button type="submit" [disabled]="!driverDataForm.valid"
+		class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">create</button>
+</form>
