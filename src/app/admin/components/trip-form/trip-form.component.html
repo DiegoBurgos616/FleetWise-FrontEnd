@@ -1,0 +1,57 @@
+<form [formGroup]="tripDataForm" (ngSubmit)="create()"  class="w-full max-w-lg" action="">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+      <label for="routeName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">routeName</label>
+      <input type="text" id="routeName"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        formControlName="routeName" required [(ngModel)]="tripData.routeName">
+    </div>
+    <div class="w-full md:w-1/4 px-3">
+      <label for="startDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">startDate</label>
+      <input type="text" id="startDate"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        formControlName="startDate" required [(ngModel)]="tripData.startDate">
+    </div>
+    <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+      <label for="endDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">endDate</label>
+      <input type="text" id="endDate"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        formControlName="endDate" required [(ngModel)]="tripData.endDate">
+    </div>
+
+
+    <div class="w-full md:w-1/4 px-3">
+      <label for="successful" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">successful</label>
+      <input type="boolean" id="successful"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        formControlName="successful" required [(ngModel)]="tripData.successful">
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
+      <label for="problemDescription" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">problemDescription</label>
+      <input type="text" id="problemDescription"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        formControlName="problemDescription" required [(ngModel)]="tripData.problemDescription">
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/1 px-3">
+      <label for="drivers" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Drivers</label>
+      <input type="text" id="drivers"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        formControlName="drivers" required [(ngModel)]="tripData.drivers">
+    </div>
+
+    <div class="w-full md:w-1/1 px-3">
+      <label for="users" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Users</label>
+      <input type="text" id="users"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        formControlName="users" required [(ngModel)]="tripData.users">
+    </div>
+  </div>
+
+
+  <button type="submit" [disabled]="!tripDataForm.valid"
+    class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">create</button>
+</form>
