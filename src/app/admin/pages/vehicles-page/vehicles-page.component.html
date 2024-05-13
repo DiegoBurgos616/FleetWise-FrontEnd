@@ -3,44 +3,42 @@
     <thead>
       <tr class="text">
         <th class="border-spacing-1">id</th>
-        <th class="border-spacing-1">brand</th>
-        <th class="border-spacing-1">model</th>
-        <th class="border-spacing-1">vin</th>
-        <th class="border-spacing-1">plate</th>
-        <th class="border-spacing-1">purchaseDate</th>
-        <th class="border-spacing-1">cost</th>
-        <th class="border-spacing-1">photoUrl</th>
-        <th class="border-spacing-1">entryDate</th>
+        <th class="border-spacing-1">Brand</th>
+        <th class="border-spacing-1">Model</th>
+        <th class="border-spacing-1">Vin</th>
+        <th class="border-spacing-1">Plate</th>
+        <th class="border-spacing-1">Purchased Date</th>
+        <th class="border-spacing-1">Cost</th>
+        <th class="border-spacing-1">Photo</th>
 
 
         <th class="border-spacing-1">
           <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             routerLink="/admin/createVehicle">
-            create
+            Create
           </button>
         </th>
       </tr>
     </thead>
     <tbody *ngFor="let vehicle of vehicles">
       <tr class="text">
-        <td class="border-spacing-1">{{ vehicle.id }}</td>
+        <td class="border-spacing-1">{{ vehicle.brand }}</td> <!--Cambiar a vehicle.id-->
         <td class="border-spacing-1">{{ vehicle.brand }}</td>
         <td class="border-spacing-1">{{ vehicle.model }}</td>
         <td class="border-spacing-1">{{ vehicle.vin }}</td>
         <td class="border-spacing-1">{{ vehicle.plate }}</td>
-        <td class="border-spacing-1">{{ vehicle.purchaseDate }}</td>
+        <td class="border-spacing-1">{{ vehicle.purchasedDate }}</td>
         <td class="border-spacing-1">{{ vehicle.cost }}</td>
         <td class="border-spacing-1">{{ vehicle.photoUrl }}</td>
-        <td class="border-spacing-1">{{ vehicle.entryDate }}</td>
         <td>
           <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            routerLink="/admin/vehicle/{{vehicle.id}}">
+            routerLink="/admin/vehicle/{{vehicle.brand}}"> <!--vehicle-id-->
             Edit
           </button>
         </td>
         <td>
           <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            (click)="delete(vehicle.id)">
+            (click)="delete(vehicle.brand)"><!--Cambiar a vehicle.id-->
             Delete
           </button>
         </td>

@@ -5,7 +5,6 @@
         <th class="border-spacing-1">id</th>
         <th class="border-spacing-1">email</th>
         <th class="border-spacing-1">password</th>
-        <th class="border-spacing-1">invitationCode</th>
  
         <th class="border-spacing-1">
           <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
@@ -17,19 +16,18 @@
     </thead>
     <tbody *ngFor="let user of users">
       <tr class="text">
-        <td class="border-spacing-1">{{ user.id }}</td>
+        <td class="border-spacing-1">{{ user.email }}</td> <!--Cambiar a user.id-->
         <td class="border-spacing-1">{{ user.email }}</td>
         <td class="border-spacing-1">{{ user.password }}</td>
-        <td class="border-spacing-1">{{ user.invitationCode }}</td>
         <td>
           <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            routerLink="/admin/users/{{user.id}}">
+            routerLink="/admin/users/{{user.email}}"> <!--Cambiar a user.id-->
             Edit
           </button>
         </td>
         <td>
           <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            (click)="delete(user.id)">
+            (click)="delete(user.email)"> <!--Cambiar a user.id-->
             Delete
           </button>
         </td>

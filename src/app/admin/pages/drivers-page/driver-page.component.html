@@ -3,40 +3,40 @@
       <thead>
         <tr class="text">
           <th class="border-spacing-1">id</th>
-          <th class="border-spacing-1">name</th>
-          <th class="border-spacing-1">responsibility</th>
-          <th class="border-spacing-1">qualification</th>
-          <th class="border-spacing-1">salary</th>
-          <th class="border-spacing-1">createdAt</th>
-          <th class="border-spacing-1">updatedAt</th>
-          <th class="border-spacing-1">trips</th>
+          <th class="border-spacing-1">First name</th>
+          <th class="border-spacing-1">Last name</th>
+          <th class="border-spacing-1">Birth date</th>
+          <th class="border-spacing-1">License number</th>
+          <th class="border-spacing-1">CURP</th>
+          <th class="border-spacing-1">Address</th>
+          <th class="border-spacing-1">Monthly salary</th>
           <th class="border-spacing-1">
             <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
               routerLink="/admin/createDriver">
-              create
+              Create
             </button>
           </th>
         </tr>
       </thead>
       <tbody *ngFor="let driver of drivers">
         <tr class="text">
-          <td class="border-spacing-1">{{ driver.id }}</td>
-          <td class="border-spacing-1">{{ driver.name }}</td>
-          <td class="border-spacing-1">{{ driver.responsibility }}</td>
-          <td class="border-spacing-1">{{ driver.qualification }}</td>
-          <td class="border-spacing-1">{{ driver.salary }}</td>
-          <td class="border-spacing-1">{{ driver.createdAt }}</td>
-          <td class="border-spacing-1">{{ driver.updatedAt }}</td>
-          <td class="border-spacing-1">{{ driver.trips }}</td>
+          <td class="border-spacing-1">{{ driver.firstName }}</td> <!--Cambiar a driver.id-->
+          <td class="border-spacing-1">{{ driver.firstName }}</td>
+          <td class="border-spacing-1">{{ driver.lastName }}</td>
+          <td class="border-spacing-1">{{ driver.birthDate }}</td>
+          <td class="border-spacing-1">{{ driver.licenseNumber }}</td>
+          <td class="border-spacing-1">{{ driver.curp }}</td>
+          <td class="border-spacing-1">{{ driver.address }}</td>
+          <td class="border-spacing-1">{{ driver.monthlySalary }}</td>
           <td>
             <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              routerLink="/admin/drivers/{{driver.id}}">
+              routerLink="/admin/drivers/{{driver.firstName}}"> <!--Cambiar a driver.id-->
               Edit
             </button>
           </td>
           <td>
             <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              (click)="delete(driver.id)">
+              (click)="delete(driver.firstName)"> <!--Cambiar a driver.id-->
               Delete
             </button>
           </td>

@@ -36,19 +36,23 @@ describe('VehicleService', () => {
     const vehicles = [
       {
         id: 1,
-        name: 'John',
-        type: 'service',
-        email: 'john@gmail.com',
-        telephone: '989434333',
-        address: '2nd avenue',
+        brand: 'Chevrolet',
+        model: 'Camaro',
+        vin: '12345678901234567',
+        plate: "ABC-123",
+        purchasedDate: '01/02/2015',
+        cost: 0,
+        photoUrl: '',
       },
       {
         id: 2,
-        name: 'doe',
-        type: 'product',
-        email: 'doe@example.com',
-        telephone: '9888434589',
-        address: '27th street',
+        brand: 'Chevrolet',
+        model: 'Camaro',
+        vin: '12345678901234567',
+        plate: "ABC-123",
+        purchasedDate: '01/02/2015',
+        cost: 0,
+        photoUrl: '',
       },
     ];
 
@@ -74,10 +78,9 @@ describe('VehicleService', () => {
       model: '',
       vin: '',
       plate: '',
-      purchaseDate: '',
+      purchasedDate: '',
       cost: 0,
       photoUrl: '',
-      entryDate: '',
     };
 
     vehicleService.create(newVehicle).subscribe((data) => {
@@ -99,11 +102,13 @@ describe('VehicleService', () => {
 
     const vehicle = {
       id: 5,
-      name: 'John',
-      type: 'service',
-      email: 'john@gmail.com',
-      telephone: '989434333',
-      address: '2nd avenue',
+      brand: 'Chevrolet',
+      model: 'Camaro',
+      vin: '12345678901234567',
+      plate: "ABC-123",
+      purchasedDate: '01/02/2015',
+      cost: 0,
+      photoUrl: '',
     };
 
     vehicleService.getOne(5).subscribe((data) => {
@@ -125,11 +130,13 @@ describe('VehicleService', () => {
 
     let expectedVehicle = {
       id: 6,
-      name: 'doe',
-      type: 'product',
-      email: 'doe@example.com',
-      telephone: '9888434589',
-      address: '27th street',
+      brand: 'Chevrolet',
+      model: 'Camaro',
+      vin: '12345678901234567',
+      plate: "ABC-123",
+      purchasedDate: '01/02/2015',
+      cost: 0,
+      photoUrl: '',
     };
 
     const dataToUpdate = {
@@ -140,7 +147,6 @@ describe('VehicleService', () => {
       purchaseDate: '',
       cost: 0,
       photoUrl: '',
-      entryDate: '',
     };
 
     vehicleService.updateOne(6, dataToUpdate).subscribe((data) => {
@@ -159,11 +165,13 @@ describe('VehicleService', () => {
 
     const vehicle = {
       id: 6,
-      name: 'John',
-      type: 'service',
-      email: 'john@gmail.com',
-      telephone: '989434333',
-      address: '2nd avenue',
+      brand: 'Chevrolet',
+      model: 'Camaro',
+      vin: '12345678901234567',
+      plate: "ABC-123",
+      purchasedDate: '01/02/2015',
+      cost: 0,
+      photoUrl: '',
     };
 
     vehicleService.delete(6).subscribe((data) => {

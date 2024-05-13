@@ -14,7 +14,7 @@ import { tokenGetterAccess } from './_helpers/jwt';
 import { environment } from '../../src/environments/environment';
 import { AuthService } from './services/auth.service';
 import { VehiclesPageComponent } from './admin/pages/vehicles-page/vehicles-page.component';
-import { TripsPageComponent } from './admin/pages/trips-page/trips-page.component';
+import { RoutesPageComponent } from './admin/pages/routes-page/routes-page.component';
 import { DriversPageComponent } from './admin/pages/drivers-page/driver-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
@@ -23,7 +23,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AppComponent,
     UsersPageComponent,
     VehiclesPageComponent,
-    TripsPageComponent,
+    RoutesPageComponent,
     LoginFormComponent,
     LoginPageComponent,
     RegisterFormComponent,
