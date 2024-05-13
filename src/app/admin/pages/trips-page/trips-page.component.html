@@ -1,0 +1,48 @@
+<div class="container mx-auto py-2">
+  <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
+    <thead>
+      <tr class="text">
+        <th class="border-spacing-1">id</th>
+        <th class="border-spacing-1">routeName</th>
+        <th class="border-spacing-1">startDate</th>
+        <th class="border-spacing-1">endDate</th>
+        <th class="border-spacing-1">successful</th>
+        <th class="border-spacing-1">problemDescription</th>
+        <th class="border-spacing-1">drivers</th>
+        <th class="border-spacing-1">users</th>
+
+        <th class="border-spacing-1">
+          <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/createTrip">
+            create
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let trip of trips">
+      <tr class="text">
+        <td class="border-spacing-1">{{ trip.id }}</td>
+        <td class="border-spacing-1">{{ trip.routeName }}</td>
+        <td class="border-spacing-1">{{ trip.startDate }}</td>
+        <td class="border-spacing-1">{{ trip.endDate }}</td>
+        <td class="border-spacing-1">{{ trip.successful }}</td>
+        <td class="border-spacing-1">{{ trip.problemDescription }}</td>
+        <td class="border-spacing-1">{{ trip.comments }}</td>
+        <td class="border-spacing-1">{{ trip.drivers }}</td>
+        <td class="border-spacing-1">{{ trip.users }}</td>
+        <td>
+          <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/trips/{{trip.id}}">
+            Edit
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            (click)="delete(trip.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

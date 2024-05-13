@@ -1,0 +1,47 @@
+<div class="container mx-auto py-2">
+    <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
+      <thead>
+        <tr class="text">
+          <th class="border-spacing-1">id</th>
+          <th class="border-spacing-1">name</th>
+          <th class="border-spacing-1">responsibility</th>
+          <th class="border-spacing-1">qualification</th>
+          <th class="border-spacing-1">salary</th>
+          <th class="border-spacing-1">createdAt</th>
+          <th class="border-spacing-1">updatedAt</th>
+          <th class="border-spacing-1">trips</th>
+          <th class="border-spacing-1">
+            <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              routerLink="/admin/createDriver">
+              create
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let driver of drivers">
+        <tr class="text">
+          <td class="border-spacing-1">{{ driver.id }}</td>
+          <td class="border-spacing-1">{{ driver.name }}</td>
+          <td class="border-spacing-1">{{ driver.responsibility }}</td>
+          <td class="border-spacing-1">{{ driver.qualification }}</td>
+          <td class="border-spacing-1">{{ driver.salary }}</td>
+          <td class="border-spacing-1">{{ driver.createdAt }}</td>
+          <td class="border-spacing-1">{{ driver.updatedAt }}</td>
+          <td class="border-spacing-1">{{ driver.trips }}</td>
+          <td>
+            <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              routerLink="/admin/drivers/{{driver.id}}">
+              Edit
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              (click)="delete(driver.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

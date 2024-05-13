@@ -1,0 +1,60 @@
+{
+  "name": "devops-frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^16.0.0",
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.0.0",
+    "@angular/forms": "^16.0.0",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/platform-browser-dynamic": "^16.0.0",
+    "@angular/router": "^16.0.0",
+    "@auth0/angular-jwt": "^5.1.2",
+    "@elemental-concept/env-bakery": "^0.1.0",
+    "@types/jest": "^29.5.1",
+    "jest": "^29.5.0",
+    "jest-preset-angular": "^13.1.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.0.1",
+    "@angular/cli": "^16.2.14",
+    "@angular/compiler-cli": "^16.0.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2",
+    "typescript": "~5.0.2"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setup.jest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "transform": {
+      "^.+\\.{ts|tsx}?$": [
+        "ts-jest",
+        {
+          "babel": true,
+          "tsConfig": "tsconfig.json"
+        }
+      ]
+    }
+  }
+}

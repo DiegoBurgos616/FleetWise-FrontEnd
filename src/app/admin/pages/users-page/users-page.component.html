@@ -1,0 +1,39 @@
+<div class="container mx-auto py-2">
+  <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
+    <thead>
+      <tr class="text">
+        <th class="border-spacing-1">id</th>
+        <th class="border-spacing-1">email</th>
+        <th class="border-spacing-1">password</th>
+        <th class="border-spacing-1">invitationCode</th>
+ 
+        <th class="border-spacing-1">
+          <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/createUser">
+            create
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users">
+      <tr class="text">
+        <td class="border-spacing-1">{{ user.id }}</td>
+        <td class="border-spacing-1">{{ user.email }}</td>
+        <td class="border-spacing-1">{{ user.password }}</td>
+        <td class="border-spacing-1">{{ user.invitationCode }}</td>
+        <td>
+          <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/users/{{user.id}}">
+            Edit
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            (click)="delete(user.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
