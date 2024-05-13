@@ -1,0 +1,22 @@
+pipeline {
+    agent {
+        docker { image 'node:18.15-alpine' }
+    }
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+        stage('Execute test cases') {
+            steps {
+                sh 'npm test'
+            }
+        }
+    }
+    post {
+        success {
+            build 'fe-zoo-animales-bonitos-cicd-pl-01'
+        }
+    }
+}
