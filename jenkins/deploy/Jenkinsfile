@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build, Package & Tag') {
+            steps {
+                withCredentials([file(credentialsId: 'env-vars-zoo-fe', variable: 'env_file')]) {
+                    writeFile file: 'src/assets/.env', text: readFile(env_file)
+                }
+                sh '''BRANCH=$(echo $GIT_BRANCH | cut -b 8-11)
+                docker build -t frontend-zoo-$BRANCH:1.0.0-$BUILD_ID .'''
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh '''BRANCH=$(echo $GIT_BRANCH | cut -b 8-11)
+                docker stop zoo-fe
+                docker run --rm --name zoo-fe --detach --network zoo-network -p 8000:80 frontend-zoo-$BRANCH:1.0.0-$BUILD_ID'''
+            }
+        }
+    }
+}
