@@ -34,7 +34,6 @@ export class RegisterFormComponent {
     if (this.registerForm.valid) {
       this.authService
         .register({
-          username: this.username.value,
           email: this.email.value,
           password: this.password.value,
         })

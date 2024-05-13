@@ -6,9 +6,9 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { VehiclesPageComponent } from './pages/vehicles-page/vehicles-page.component';
 import { EditVehicleComponent } from './pages/edit-vehicle/edit-vehicle.component';
 import { CreateVehicleComponent } from './pages/create-vehicle/create-vehicle.component';
-import { TripsPageComponent } from './pages/trips-page/trips-page.component';
-import { EditTripComponent } from './pages/edit-trip/edit-trip.component';
-import { CreateTripComponent } from './pages/create-trip/create-trip.component';
+import { RoutesPageComponent } from './pages/routes-page/routes-page.component';
+import { EditRouteComponent } from './pages/edit-route/edit-route.component';
+import { CreateRouteComponent } from './pages/create-route/create-route.component';
 import { EditDriverComponent } from './pages/edit-driver/edit-driver.component';
 import { DriversPageComponent } from './pages/drivers-page/driver-page.component';
 import { CreateDriverComponent } from './pages/create-driver/create-driver.component';
@@ -39,16 +39,16 @@ const routes: Routes = [
     component: CreateVehicleComponent,
   },
   {
-    path: 'trips',
-    component: TripsPageComponent,
+    path: 'routes',
+    component: RoutesPageComponent,
   },
   {
-    path: 'trips/:id',
-    component: EditTripComponent,
+    path: 'routes/:id',
+    component: EditRouteComponent,
   },
   {
-    path: 'createTrip',
-    component: CreateTripComponent,
+    path: 'createRoutes',
+    component: CreateRouteComponent,
   },
   {
     path: 'drivers',

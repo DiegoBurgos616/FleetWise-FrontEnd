@@ -40,7 +40,7 @@ describe('AuthService', () => {
 
     const req = httpMock.expectOne({
       method: 'POST',
-      url: `${environment().apiURL}/login`,
+      url: `${environment().apiURL}/auth/login`,
     });
 
     req.flush(responseToken);
@@ -59,7 +59,6 @@ describe('AuthService', () => {
 
     authService
       .register({
-        username: 'john',
         email: 'example@mail.com',
         password: 'strongPassword',
       })
@@ -69,7 +68,7 @@ describe('AuthService', () => {
 
     const req = httpMock.expectOne({
       method: 'POST',
-      url: `${environment().apiURL}/register`,
+      url: `${environment().apiURL}/auth/register`,
     });
 
     req.flush(responseUser);

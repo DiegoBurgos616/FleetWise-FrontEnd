@@ -1,0 +1,49 @@
+<div class="container mx-auto py-2">
+  <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
+    <thead>
+      <tr class="text">
+        <th class="border-spacing-1">id</th>
+        <th class="border-spacing-1">Route </th>
+        <th class="border-spacing-1">Problem description</th>
+        <th class="border-spacing-1">comments</th>
+        <th class="border-spacing-1">Start latitudr</th>
+        <th class="border-spacing-1">Start longitude</th>
+        <th class="border-spacing-1">End latitude</th>
+        <th class="border-spacing-1">End longitude</th>
+        <th class="border-spacing-1">Assigned History ID</th>
+
+        <th class="border-spacing-1">
+          <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/createRoute">
+            Create
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let route of routes">
+      <tr class="text">
+        <td class="border-spacing-1">{{ route.routeName }}</td> <!--cambiar a route.id-->
+        <td class="border-spacing-1">{{ route.routeName }}</td>
+        <td class="border-spacing-1">{{ route.problemDescription }}</td>
+        <td class="border-spacing-1">{{ route.comments }}</td>
+        <td class="border-spacing-1">{{ route.startLatitude }}</td>
+        <td class="border-spacing-1">{{ route.startLongitude }}</td>
+        <td class="border-spacing-1">{{ route.endLatitude }}</td>
+        <td class="border-spacing-1">{{ route.endLongitude }}</td>
+        <td class="border-spacing-1">{{ route.assignedHistoryId }}</td>
+        <td>
+          <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            routerLink="/admin/routes/{{route.routeName}}"> <!--Cambiar a route.id-->
+            Edit
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            (click)="delete(route.routeName)"> <!--Cambiar a route.id-->
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

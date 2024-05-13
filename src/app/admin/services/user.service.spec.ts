@@ -38,13 +38,11 @@ describe('UserService', () => {
         id: '',
         email: '',
         password: '',
-        invitationCode: '',
       },
       {
         id: '',
         email: '',
         password: '',
-        invitationCode: '',
       },
     ];
 
@@ -68,7 +66,6 @@ describe('UserService', () => {
     const newUser: UserRequest = {
       email: '',
       password: '',
-      invitationCode: '',
     };
 
     userService.create(newUser).subscribe((data) => {
@@ -92,7 +89,6 @@ describe('UserService', () => {
       id: '',
       email: '',
       password: '',
-      invitationCode: '',
     };
 
     userService.getOne(5).subscribe((data) => {
@@ -116,13 +112,12 @@ describe('UserService', () => {
       id: '',
       email: '',
       password: '',
-      invitationCode: '',
+
     };
 
     const dataToUpdate = {
       email: '',
       password: '',
-      invitationCode: '',
     };
 
     userService.updateOne(6, dataToUpdate).subscribe((data) => {
@@ -143,7 +138,6 @@ describe('UserService', () => {
       id: '',
       email: '',
       password: '',
-      invitationCode: '',
     };
 
     userService.delete(2).subscribe((data) => {

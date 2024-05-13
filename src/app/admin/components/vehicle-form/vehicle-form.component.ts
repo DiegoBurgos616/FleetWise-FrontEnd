@@ -18,10 +18,9 @@ export class VehicleFormComponent {
     model: new FormControl(this.vehicleData.model, [Validators.required]),
     vin: new FormControl(this.vehicleData.vin, [Validators.required]),
     plate: new FormControl(this.vehicleData.plate, [Validators.required]),
-    purchaseDate: new FormControl(this.vehicleData.purchaseDate, [Validators.required]),
+    purchasedDate: new FormControl(this.vehicleData.purchasedDate, [Validators.required]),
     cost: new FormControl(this.vehicleData.cost, [Validators.required]),
     photoUrl: new FormControl(this.vehicleData.photoUrl, [Validators.required]),
-    entryDate: new FormControl(this.vehicleData.entryDate, [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -48,18 +47,14 @@ export class VehicleFormComponent {
     return this.vehicleDataForm.get('plate');
   }
 
-  get purchaseDate() {
-    return this.vehicleDataForm.get('purchaseDate');
+  get purchasedDate() {
+    return this.vehicleDataForm.get('purchasedDate');
   }
 
   get cost() {
     return this.vehicleDataForm.get('cost');
   }
   get photoURL() {
-    return this.vehicleDataForm.get('photoURL');
-  }
-
-  get entryDate() {
-    return this.vehicleDataForm.get('entryDate');
+    return this.vehicleDataForm.get('photoUrl');
   }
 }

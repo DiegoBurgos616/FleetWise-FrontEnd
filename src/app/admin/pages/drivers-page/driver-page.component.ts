@@ -23,7 +23,7 @@ export class DriversPageComponent {
     });
   }
 
-  delete(driverId?: string): void {
+  delete(driverId: string): void {
     const id = Number(driverId);
     this.driverService
       .delete(id)

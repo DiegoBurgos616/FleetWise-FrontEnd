@@ -36,23 +36,23 @@ describe('DriverService', () => {
     const drivers = [
       {
         id: '1',
-        name: 'prueba',
-        responsibility: 'prueba',
-        qualification: 'prueba',
-        salary: 0,
-        createdAt: 'prueba',
-        updatedAt: 'prueba',
-        trips: [],
+        firstName: 'prueba',
+        lastName: 'prueba',
+        birthDate: '01/01/1999',
+        licenseNumber: 0,
+        curp: 'prueba',
+        address: 'prueba',
+        monthlySalary: 0,
       },
       {
         id: '1',
-        name: 'prueba',
-        responsibility: 'prueba',
-        qualification: 'prueba',
-        salary: 0,
-        createdAt: 'prueba',
-        updatedAt: 'prueba',
-        trips: [],
+        firstName: 'prueba',
+        lastName: 'prueba',
+        birthDate: '01/01/1999',
+        licenseNumber: 0,
+        curp: 'prueba',
+        address: 'prueba',
+        monthlySalary: 0,
       },
     ];
 
@@ -74,13 +74,13 @@ describe('DriverService', () => {
     let actualDrivers: Driver | undefined;
 
     const newDriver: DriverRequest = {
-      name: 'prueba',
-      responsibility: 'prueba',
-      qualification: 'prueba',
-      salary: 0,
-      createdAt: 'prueba',
-      updatedAt: 'prueba',
-      trips: [],
+      firstName: 'prueba',
+      lastName: 'prueba',
+      birthDate: '01/01/1999',
+      licenseNumber: 0,
+      curp: 'prueba',
+      address: 'prueba',
+      monthlySalary: 0,
     };
 
     driverService.create(newDriver).subscribe((data) => {
@@ -102,13 +102,13 @@ describe('DriverService', () => {
 
     const driver = {
       id: '1',
-      name: 'prueba',
-      responsibility: 'prueba',
-      qualification: 'prueba',
-      salary: 0,
-      createdAt: 'prueba',
-      updatedAt: 'prueba',
-      trips: [],
+      firstName: 'prueba',
+      lastName: 'prueba',
+      birthDate: '01/01/1999',
+      licenseNumber: 0,
+      curp: 'prueba',
+      address: 'prueba',
+      monthlySalary: 0,
     };
 
     driverService.getOne(5).subscribe((data) => {
@@ -130,18 +130,18 @@ describe('DriverService', () => {
 
     let expectedDriver = {
       id: '1',
-      name: 'prueba',
-      responsibility: 'prueba',
-      qualification: 'prueba',
-      salary: 0,
-      createdAt: 'prueba',
-      updatedAt: 'prueba',
-      trips: [],
+      firstName: 'prueba',
+      lastName: 'prueba',
+      birthDate: '01/01/1999',
+      licenseNumber: 0,
+      curp: 'prueba',
+      address: 'prueba',
+      monthlySalary: 0,
     };
 
     const dataToUpdate = {
-      name: 'Smith',
-      Qualification: 'Biology',
+      firstName: 'Smith',
+      lastName: 'Jhonson',
     };
 
     driverService.updateOne(6, dataToUpdate).subscribe((data) => {
@@ -160,13 +160,13 @@ describe('DriverService', () => {
 
     const driver = {
       id: '1',
-      name: 'prueba',
-      responsibility: 'prueba',
-      qualification: 'prueba',
-      salary: 0,
-      createdAt: 'prueba',
-      updatedAt: 'prueba',
-      trips: [],
+      firstName: 'prueba',
+      lastName: 'prueba',
+      birthDate: '01/01/1999',
+      licenseNumber: 0,
+      curp: 'prueba',
+      address: 'prueba',
+      monthlySalary: 0,
     };
 
     driverService.delete(6).subscribe((data) => {

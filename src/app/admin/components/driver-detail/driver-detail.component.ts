@@ -17,21 +17,23 @@ export class DriverDetailComponent {
     private router: Router
   ) {}
   driverDataForm: FormGroup = new FormGroup({
-    name: new FormControl(this.driverData.name, [Validators.required]),
-    responsibility: new FormControl(this.driverData.responsibility, [
+    firstName: new FormControl(this.driverData.firstName, [Validators.required]),
+    lastName: new FormControl(this.driverData.lastName, [
       Validators.required,
     ]),
-    qualification: new FormControl(this.driverData.qualification, [
+    birthDate: new FormControl(this.driverData.birthDate, [
       Validators.required,
     ]),
-    salary: new FormControl(this.driverData.salary, [Validators.required]),
-    createdAt: new FormControl(this.driverData.createdAt, [
+    licenseNumber: new FormControl(this.driverData.licenseNumber, [Validators.required]),
+    curp: new FormControl(this.driverData.curp, [
       Validators.required,
     ]),
-    updatedAt: new FormControl(this.driverData.updatedAt, [
+    address: new FormControl(this.driverData.address, [
       Validators.required,
     ]),
-    trips: new FormControl(this.driverData.trips, [Validators.required]),
+    monthlySalary: new FormControl(this.driverData.monthlySalary, [
+      Validators.required,
+    ]),
   });
 
   ngOnInit(): void {
@@ -48,27 +50,31 @@ export class DriverDetailComponent {
     this.router.navigate(['/admin/drivers']);
   }
 
-  get name() {
-    return this.driverDataForm.get('name');
+  get firstName() {
+    return this.driverDataForm.get('firstName');
   }
 
-  get responsibility() {
-    return this.driverDataForm.get('responsibility');
+  get lastName() {
+    return this.driverDataForm.get('lastName');
   }
 
-  get qualification() {
-    return this.driverDataForm.get('qualification');
+  get birthDate() {
+    return this.driverDataForm.get('birthDate');
   }
 
-  get salary() {
-    return this.driverDataForm.get('salary');
+  get licenseNumber() {
+    return this.driverDataForm.get('licenseNumber');
   }
 
-  get createdAt() {
-    return this.driverDataForm.get('createdAt');
+  get curp() {
+    return this.driverDataForm.get('curp');
   }
 
-  get updatedAt() {
-    return this.driverDataForm.get('updatedAt');
+  get address() {
+    return this.driverDataForm.get('address');
+  }
+
+  get monthlySalary() {
+    return this.driverDataForm.get('monthlySalary');
   }
 }

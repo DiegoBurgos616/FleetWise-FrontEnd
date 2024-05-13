@@ -12,10 +12,10 @@ import { VehicleDetailComponent } from './components/vehicle-detail/vehicle-deta
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { CreateVehicleComponent } from './pages/create-vehicle/create-vehicle.component';
 import { EditVehicleComponent } from './pages/edit-vehicle/edit-vehicle.component';
-import { TripDetailComponent } from './components/trip-detail/trip-detail.component';
-import { TripFormComponent } from './components/trip-form/trip-form.component';
-import { CreateTripComponent } from './pages/create-trip/create-trip.component';
-import { EditTripComponent } from './pages/edit-trip/edit-trip.component';
+import { RouteDetailComponent } from './components/route-detail/route-detail.component';
+import { RouteFormComponent } from './components/route-form/route-form.component';
+import { CreateRouteComponent } from './pages/create-route/create-route.component';
+import { EditRouteComponent } from './pages/edit-route/edit-route.component';
 import { DriverDetailComponent } from './components/driver-detail/driver-detail.component';
 import { EditDriverComponent } from './pages/edit-driver/edit-driver.component';
 import { DriverFormComponent } from './components/driver-form/driver-form.component';
@@ -31,10 +31,10 @@ import { CreateDriverComponent } from './pages/create-driver/create-driver.compo
     EditVehicleComponent,
     VehicleFormComponent,
     CreateVehicleComponent,
-    TripDetailComponent,
-    EditTripComponent,
-    TripFormComponent,
-    CreateTripComponent,
+    RouteDetailComponent,
+    EditRouteComponent,
+    RouteFormComponent,
+    CreateRouteComponent,
     DriverDetailComponent,
     EditDriverComponent,
     DriverFormComponent,
