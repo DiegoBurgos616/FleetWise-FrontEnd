@@ -16,13 +16,13 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   register(user: User): Observable<BaseUser> {
-    return this.httpClient.post<User>(`${environment().apiURL}/register`, user);
+    return this.httpClient.post<User>(`${environment().apiURL}/auth/register`, user);
   }
 
   login(user: LoginRequest): Observable<LoginResponse> {
     return this.httpClient
       .post<LoginResponse>(
-        `${environment().apiURL}/login`,
+        `${environment().apiURL}/auth/login`,
         user,
         this.httpOptions
       )
