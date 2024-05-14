@@ -8,19 +8,12 @@ import { Driver, DriverRequest } from '../models/driver';
   providedIn: 'root',
 })
 export class DriverService {
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    }),
-  };
-
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<Driver[]> {
     return this.httpClient.get<Driver[]>(
       `${environment().apiURL}/drivers`,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
@@ -28,14 +21,14 @@ export class DriverService {
     return this.httpClient.post<Driver>(
       `${environment().apiURL}/drivers`,
       driver,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
   getOne(id: number): Observable<Driver> {
     return this.httpClient.get<Driver>(
       `${environment().apiURL}/drivers/${id}`,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
@@ -43,14 +36,23 @@ export class DriverService {
     return this.httpClient.put<Driver>(
       `${environment().apiURL}/drivers/${id}`,
       driver,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
   delete(id: number): Observable<void> {
     return this.httpClient.delete<void>(
       `${environment().apiURL}/drivers/${id}`,
-      this.httpOptions
+      this.getHttpOptions()
     );
+  }
+
+  private getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
   }
 }
