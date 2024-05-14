@@ -13,7 +13,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''BRANCH=$(echo $GIT_BRANCH | cut -b 8-11)
-                docker run --rm --name frontend-fleetwise -d -p 80:80 frontend-zoo-$BRANCH:1.0.0-$BUILD_ID'''
+                docker run --rm --name frontend-fleetwise -d -p 80:80 frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID'''
             }
         }
     }
