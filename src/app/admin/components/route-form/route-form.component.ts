@@ -37,23 +37,31 @@ export class RouteFormComponent {
     return this.routeDataForm.get('routeName');
   }
 
-  get startDate() {
-    return this.routeDataForm.get('startDate');
-  }
-
-  get successful() {
-    return this.routeDataForm.get('successful');
+  get problemDescription() {
+    return this.routeDataForm.get('problemDescription');
   }
 
   get comments() {
     return this.routeDataForm.get('comments');
   }
 
-  get drivers() {
-    return this.routeDataForm.get('drivers');
+  get startLatitude() {
+    return this.routeDataForm.get('startLatitude');
   }
 
-  get users() {
-    return this.routeDataForm.get('users');
+  get startLongitude() {
+    return this.routeDataForm.get('startLongitude');
+  }
+
+  get endLatitude() {
+    return this.routeDataForm.get('endLongitude');
+  }
+
+  get endLongitude() {
+    return this.routeDataForm.get('endLongitude');
+  }
+
+  get assignedHistoryId() {
+    return this.routeDataForm.get('assignedHistoryId');
   }
 }

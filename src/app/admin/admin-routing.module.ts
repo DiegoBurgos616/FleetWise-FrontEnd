@@ -12,7 +12,9 @@ import { CreateRouteComponent } from './pages/create-route/create-route.componen
 import { EditDriverComponent } from './pages/edit-driver/edit-driver.component';
 import { DriversPageComponent } from './pages/drivers-page/driver-page.component';
 import { CreateDriverComponent } from './pages/create-driver/create-driver.component';
-import { AssignmentHistoryComponent } from './components/assignment-history-detail/assignment-history-detail.component';
+import { AssignmentHistoryPageComponent } from './pages/assignment-history-page/assignment-history-page.component';
+import { CreateAssignmentHistoryComponent } from './pages/create-assignment-history/create-assignment-history.component';
+import { EditAssignmentHistoryComponent } from './pages/edit-assignment-history/edit-assignment-history.component';
 
 const routes: Routes = [
   {
@@ -32,10 +34,17 @@ const routes: Routes = [
     component: VehiclesPageComponent,
   },
   {
-    path: 'assignmentHistory',
-    component: AssignmentHistoryComponent,
+    path: 'assignationHistory',
+    component: AssignmentHistoryPageComponent,
   },
-  
+  {
+    path: 'createAssignmentHistory',
+    component: CreateAssignmentHistoryComponent,
+  },
+  {
+    path: 'assignmentHistory/:id',
+    component: EditAssignmentHistoryComponent,
+  },
   {
     path: 'vehicles/:id',
     component: EditVehicleComponent
@@ -53,7 +62,7 @@ const routes: Routes = [
     component: EditRouteComponent,
   },
   {
-    path: 'createRoutes',
+    path: 'createRoute',
     component: CreateRouteComponent,
   },
   {
@@ -67,6 +76,10 @@ const routes: Routes = [
   {
     path: 'createDriver',
     component: CreateDriverComponent,
+  },
+  {
+    path: 'assignment-history',
+    component: AssignmentHistoryPageComponent,
   },
   {
     path: '**',

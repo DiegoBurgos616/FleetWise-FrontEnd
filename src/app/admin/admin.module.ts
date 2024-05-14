@@ -20,7 +20,11 @@ import { DriverDetailComponent } from './components/driver-detail/driver-detail.
 import { EditDriverComponent } from './pages/edit-driver/edit-driver.component';
 import { DriverFormComponent } from './components/driver-form/driver-form.component';
 import { CreateDriverComponent } from './pages/create-driver/create-driver.component';
-import { AssignmentHistoryComponent } from './components/assignment-history-detail/assignment-history-detail.component';
+import { AssignmentHistoryDetailComponent } from './components/assignment-history-detail/assignment-history-detail.component';
+import { EditAssignmentHistoryComponent } from './pages/edit-assignment-history/edit-assignment-history.component';
+import { AssignmentHistoryFormComponent } from './components/assignment-history-form/assignment-history-form.component';
+import { CreateAssignmentHistoryComponent } from './pages/create-assignment-history/create-assignment-history.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -40,10 +44,14 @@ import { AssignmentHistoryComponent } from './components/assignment-history-deta
     EditDriverComponent,
     DriverFormComponent,
     
-    AssignmentHistoryComponent,
+    AssignmentHistoryDetailComponent,
+    EditAssignmentHistoryComponent,
+    AssignmentHistoryFormComponent,
+    CreateAssignmentHistoryComponent,
     CreateDriverComponent
   ],
   imports: [
+    RouterModule,
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,

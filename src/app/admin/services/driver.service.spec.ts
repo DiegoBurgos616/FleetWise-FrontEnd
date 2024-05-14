@@ -76,7 +76,7 @@ describe('DriverService', () => {
     const newDriver: DriverRequest = {
       firstName: 'prueba',
       lastName: 'prueba',
-      birthDate: '01/01/1999',
+      birthDate: new Date(),
       licenseNumber: 0,
       curp: 'prueba',
       address: 'prueba',

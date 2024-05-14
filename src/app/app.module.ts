@@ -17,6 +17,7 @@ import { VehiclesPageComponent } from './admin/pages/vehicles-page/vehicles-page
 import { RoutesPageComponent } from './admin/pages/routes-page/routes-page.component';
 import { DriversPageComponent } from './admin/pages/drivers-page/driver-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AssignmentHistoryPageComponent } from './admin/pages/assignment-history-page/assignment-history-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RegisterFormComponent,
     RegisterPageComponent,
     DriversPageComponent,
+    AssignmentHistoryPageComponent,
     NavbarComponent
   ],
   imports: [
