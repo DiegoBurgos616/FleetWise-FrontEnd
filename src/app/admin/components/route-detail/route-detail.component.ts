@@ -59,7 +59,7 @@ export class RouteDetailComponent {
     return this.routeDataForm.get('comments');
   }
 
-  get startLAtitude() {
+  get startLatitude() {
     return this.routeDataForm.get('startLatitude');
   }
 

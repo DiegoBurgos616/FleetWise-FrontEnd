@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Driver, DriverRequest, initialDriverRequest, initialDriverState } from '../../models/driver';
+import { DriverRequest, initialDriverRequest } from '../../models/driver';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DriverService } from '../../services/driver.service';
 import { Router } from '@angular/router';

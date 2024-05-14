@@ -8,7 +8,7 @@ import { AssignmentHistoryService } from 'app/admin/services/assignment-history.
   selector: 'app-assignment-history-detail',
   templateUrl: './assignment-history-detail.component.html',
 })
-export class AssignmentHistoryComponent implements OnInit, OnDestroy {
+export class AssignmentHistoryDetailComponent implements OnInit, OnDestroy {
   @Input() assignmentHistoryData: Partial<AssignmentHistory> = initialAssignmentHistoryState;
  
 

@@ -25,10 +25,10 @@ export class RouteService {
     );
   }
 
-  create(trip: RouteRequest): Observable<Route> {
+  create(route: RouteRequest): Observable<Route> {
     return this.httpClient.post<RouteRequest>(
       `${environment().apiURL}/route`,
-      trip,
+      route,
       this.httpOptions
     );
   }

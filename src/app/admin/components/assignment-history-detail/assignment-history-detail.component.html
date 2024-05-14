@@ -1,14 +1,14 @@
 <form [formGroup]="assignmentHistoryDataForm" class="w-full max-w-lg" action="">
     <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label for="vehicleId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">vehicleId</label>
+            <label for="vehicleId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Vehicle ID</label>
             <input type="text" id="vehicleId"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 formControlName="vehicleId" required [(ngModel)]="assignmentHistoryData.vehicleId">
         </div>
         
         <div class="w-full md:w-1/2 px-3">
-            <label for="driverId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">driverId</label>
+            <label for="driverId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Driver ID</label>
             <input type="text" id="driverId"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 formControlName="driverId" required [(ngModel)]="assignmentHistoryData.driverId">

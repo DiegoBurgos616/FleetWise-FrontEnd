@@ -9,7 +9,7 @@
         <div class="w-full md:w-1/2 px-3">
             <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Last name</label>
             <input type="text" id="lastName"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 formControlName="lastName" required [(ngModel)]="driverData.lastName">
         </div>
     </div>
@@ -17,13 +17,13 @@
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label for="birthDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Birth date</label>
             <input type="date" id="birthDate"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 formControlName="birthDate" required [(ngModel)]="driverData.birthDate">
         </div>
         <div class="w-full md:w-1/2 px-3">
             <label for="licenseNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">License Number</label>
             <input type="number" id="licenseNumber"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 formControlName="licenseNumber" required [(ngModel)]="driverData.licenseNumber">
         </div>
         <div class="w-full md:w-1/2 px-3">
@@ -43,11 +43,11 @@
         <div class="w-full md:w-1/1 px-3">
             <label for="monthlysalary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Salary (Monthly)</label>
             <input type="number" id="monthlysalary"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 formControlName="monthlysalary" required [(ngModel)]="driverData.monthlysalary">
         </div>
     </div>
   
 	<button type="submit" [disabled]="!driverDataForm.valid"
-		class=" text-dark bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">create</button>
+		class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
 </form>

@@ -78,7 +78,7 @@ describe('VehicleService', () => {
       model: '',
       vin: '',
       plate: '',
-      purchasedDate: '',
+      purchasedDate: new Date(),
       cost: 0,
       photoUrl: '',
     };

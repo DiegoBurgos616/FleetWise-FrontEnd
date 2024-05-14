@@ -30,7 +30,7 @@ describe('RouteService', () => {
     expect(RouteService).toBeTruthy();
   });
 
-  it('#getAll should retrieve all trips', () => {
+  it('#getAll should retrieve all routes', () => {
     let actualRoute: Route[] | undefined;
 
     const routes = [
@@ -72,7 +72,7 @@ describe('RouteService', () => {
     expect(actualRoute).toEqual(routes);
   });
 
-  it('#create should create a new trip', () => {
+  it('#create should create a new route', () => {
     let actualRoute: Route | undefined;
 
     const newRoute: RouteRequest = {
@@ -100,7 +100,7 @@ describe('RouteService', () => {
     expect(actualRoute).toEqual({ id: 7, ...newRoute });
   });
 
-  it('#getOne should retrieve one trip by id', () => {
+  it('#getOne should retrieve one route by id', () => {
     let actualRoute: Route | undefined;
 
     const routes = {
@@ -167,7 +167,7 @@ describe('RouteService', () => {
     expect(actualRoute).toEqual(expectedRoute);
   });
 
-  it('#delete should remove a trip by id', () => {
+  it('#delete should remove a route by id', () => {
     let deletedRoute: Route | undefined;
 
     const route = {
