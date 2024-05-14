@@ -1,5 +1,6 @@
 
 export interface Driver {
+    id?:number;
     firstName: string;
     lastName: string;
     birthDate: Date;
@@ -22,6 +23,7 @@ export const initialDriverState: Driver = {
 };
 
 export const initialDriverRequest: DriverRequest = {
+    
     firstName: '',
     lastName: '',
     birthDate: new Date(),

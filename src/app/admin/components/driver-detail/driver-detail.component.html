@@ -1,54 +1,58 @@
-<form [formGroup]="driverDataForm" class="w-full max-w-lg" action="">
+<form [formGroup]="driverDataForm" class="w-full max-w-lg" (ngSubmit)="save()">
     <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-            <input type="text" id="firstName"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                formControlName="firstName" required [(ngModel)]="driverData.firstName">
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-            <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-            <input type="text" id="lastName"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                formControlName="lastName" required [(ngModel)]="driverData.lastName">
-        </div>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+        <input type="text" id="firstName"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+               formControlName="firstName" required>
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
+        <input type="text" id="lastName"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+               formControlName="lastName" required>
+      </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label for="birthDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birth date</label>
-            <input type="date" id="birthDate"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                formControlName="birthDate" required [(ngModel)]="driverData.birthDate">
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-            <label for="licenseNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">License number</label>
-            <input type="number" id="licenseNumber"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                formControlName="licenseNumber" required [(ngModel)]="driverData.licenseNumber">
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-            <label for="curp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CURP</label>
-            <input type="text" id="curp"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                formControlName="curp" required [(ngModel)]="driverData.curp">
-        </div>
-        <div class="w-full md:w-1/2 px-3">
-            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-            <input type="string" id="address"
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                formControlName="address" required [(ngModel)]="driverData.address">
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/1 px-3">
-                <label for="monthlysalary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salary (Monthly)</label>
-                <input type="number" id="monthlysalary"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                    formControlName="monthlysalary" required [(ngModel)]="driverData.monthlysalary">
-            </div>
-        </div>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="birthDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birth date</label>
+        <input type="date" id="birthDate"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+               formControlName="birthDate" required>
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label for="licenseNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">License number</label>
+        <input type="number" id="licenseNumber"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+               formControlName="licenseNumber" required>
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3">
+        <label for="curp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CURP</label>
+        <input type="text" id="curp"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+               formControlName="curp" required>
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+        <input type="text" id="address"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+               formControlName="address" required>
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/1 px-3">
+        <label for="monthlysalary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salary (Monthly)</label>
+        <input type="number" id="monthlysalary"
+               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+               formControlName="monthlysalary" required>
+      </div>
     </div>
     
+    <button type="submit" [disabled]="!driverDataForm.valid"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      {{ driverData.id ? 'Update' : 'Create' }}
+    </button>
+  </form>
   
-    <button type="submit" [disabled]="!driverDataForm.valid" (click)="update()"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
-</form>
