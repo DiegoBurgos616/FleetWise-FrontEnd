@@ -1,80 +1,55 @@
-import { Component, Input } from '@angular/core';
-import { Driver, initialDriverState } from '../../models/driver';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DriverService } from '../../services/driver.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Driver, initialDriverState } from '../../models/driver';
 
 @Component({
   selector: 'app-driver-detail',
   templateUrl: './driver-detail.component.html',
 })
-export class DriverDetailComponent {
+export class DriverDetailComponent implements OnInit {
   @Input() driverData: Partial<Driver> = initialDriverState;
+
+  driverDataForm: FormGroup = new FormGroup({
+    firstName: new FormControl(this.driverData.firstName, [Validators.required]),
+    lastName: new FormControl(this.driverData.lastName, [Validators.required]),
+    birthDate: new FormControl(this.driverData.birthDate, [Validators.required]),
+    licenseNumber: new FormControl(this.driverData.licenseNumber, [Validators.required]),
+    curp: new FormControl(this.driverData.curp, [Validators.required]),
+    address: new FormControl(this.driverData.address, [Validators.required]),
+    monthlysalary: new FormControl(this.driverData.monthlysalary, [Validators.required]),
+  });
 
   constructor(
     private driverService: DriverService,
-    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
-  driverDataForm: FormGroup = new FormGroup({
-    firstName: new FormControl(this.driverData.firstName, [Validators.required]),
-    lastName: new FormControl(this.driverData.lastName, [
-      Validators.required,
-    ]),
-    birthDate: new FormControl(this.driverData.birthDate, [
-      Validators.required,
-    ]),
-    licenseNumber: new FormControl(this.driverData.licenseNumber, [Validators.required]),
-    curp: new FormControl(this.driverData.curp, [
-      Validators.required,
-    ]),
-    address: new FormControl(this.driverData.address, [
-      Validators.required,
-    ]),
-    monthlysalary: new FormControl(this.driverData.monthlysalary, [
-      Validators.required,
-    ]),
-  });
 
   ngOnInit(): void {
-    Object.assign(this.driverData, initialDriverState);
+    this.driverDataForm.patchValue(this.driverData);
   }
 
-  ngOnDestroy(): void {
-    Object.assign(this.driverData, initialDriverState);
+  save(): void {
+    if (this.driverData.id) {
+      this.update();
+    } else {
+      this.create();
+    }
+  }
+
+  create(): void {
+    this.driverService.create(this.driverDataForm.value).subscribe(() => {
+      this.router.navigate(['/admin/drivers']);
+    });
   }
 
   update(): void {
-    const driverId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.driverService.updateOne(driverId, this.driverData).subscribe();
-    this.router.navigate(['/admin/drivers']);
-  }
-
-  get firstName() {
-    return this.driverDataForm.get('firstName');
-  }
-
-  get lastName() {
-    return this.driverDataForm.get('lastName');
-  }
-
-  get birthDate() {
-    return this.driverDataForm.get('birthDate');
-  }
-
-  get licenseNumber() {
-    return this.driverDataForm.get('licenseNumber');
-  }
-
-  get curp() {
-    return this.driverDataForm.get('curp');
-  }
-
-  get address() {
-    return this.driverDataForm.get('address');
-  }
-
-  get monthlysalary() {
-    return this.driverDataForm.get('monthlysalary');
+    if (this.driverData.id) {
+      const driverId = Number(this.driverData.id);
+      this.driverService.updateOne(driverId, this.driverDataForm.value).subscribe(() => {
+        this.router.navigate(['/admin/drivers']);
+      });
+    }
   }
 }

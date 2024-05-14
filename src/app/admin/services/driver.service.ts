@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -26,7 +25,7 @@ export class DriverService {
   }
 
   create(driver: DriverRequest): Observable<Driver> {
-    return this.httpClient.post<DriverRequest>(
+    return this.httpClient.post<Driver>(
       `${environment().apiURL}/drivers`,
       driver,
       this.httpOptions
@@ -48,8 +47,8 @@ export class DriverService {
     );
   }
 
-  delete(id: number): Observable<Driver> {
-    return this.httpClient.delete<Driver>(
+  delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(
       `${environment().apiURL}/drivers/${id}`,
       this.httpOptions
     );

@@ -20,7 +20,7 @@
       </thead>
       <tbody *ngFor="let driver of drivers">
         <tr class="text">
-          <td class="border-spacing-1">{{ driver.firstName }}</td> <!--Cambiar a driver.id-->
+          <td class="border-spacing-1">{{ driver.id }}</td> <!--Cambiar a driver.id-->
           <td class="border-spacing-1">{{ driver.firstName }}</td>
           <td class="border-spacing-1">{{ driver.lastName }}</td>
           <td class="border-spacing-1">{{ driver.birthDate }}</td>
@@ -36,9 +36,9 @@
           </td>
           <td>
             <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              (click)="delete(driver.firstName)"> <!--Cambiar a driver.id-->
-              Delete
-            </button>
+            (click)="delete(driver.id)">
+      Delete
+    </button>
           </td>
         </tr>
       </tbody>

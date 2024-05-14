@@ -9,7 +9,7 @@ import { tap } from 'rxjs';
   templateUrl: './driver-page.component.html',
 })
 export class DriversPageComponent {
-    drivers: Driver[] = [];
+  drivers: Driver[] = [];
 
   constructor(private driverService: DriverService, private router: Router) {}
 
@@ -23,11 +23,15 @@ export class DriversPageComponent {
     });
   }
 
-  delete(driverId: string): void {
-    const id = Number(driverId);
-    this.driverService
-      .delete(id)
-      .pipe(tap(() => this.router.navigate(['/admin/drivers'])))
-      .subscribe((res) => this.getAllDrivers());
+  delete(driverId: number | undefined): void {
+    if (driverId) { // Verificar si driverId no es undefined
+      this.driverService
+        .delete(driverId)
+        .pipe(tap(() => this.getAllDrivers())) // Actualización de la lista después de la eliminación
+        .subscribe(() => {
+          // Opcional: Redirigir después de la eliminación
+          this.router.navigate(['/admin/drivers']);
+        });
+    }
   }
 }
