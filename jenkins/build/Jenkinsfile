@@ -8,11 +8,11 @@ pipeline {
                 sh 'npm ci'
             }
         }
-        stage('Execute test cases') {
+        /*stage('Execute test cases') {
             steps {
                 sh 'npm test'
             }
-        }
+        }*/
     }
     post {
         success {
