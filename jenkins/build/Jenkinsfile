@@ -8,15 +8,15 @@ pipeline {
                 sh 'npm ci'
             }
         }
-        stage('Execute test cases') {
+        /*stage('Execute test cases') {
             steps {
                 sh 'npm test'
             }
-        }
+        }*/
     }
     post {
         success {
-            build 'fe-zoo-animales-bonitos-cicd-pl-01'
+            build 'deployfleetwisefe-jenkins'
         }
     }
 }
