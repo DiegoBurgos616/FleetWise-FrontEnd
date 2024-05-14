@@ -16,7 +16,7 @@ pipeline {
     }
     post {
         success {
-            build 'fe-zoo-animales-bonitos-cicd-pl-01'
+            build 'deployfleetwisefe-jenkins'
         }
     }
 }
