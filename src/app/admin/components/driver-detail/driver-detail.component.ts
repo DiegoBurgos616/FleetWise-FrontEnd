@@ -12,17 +12,18 @@ export class DriverDetailComponent implements OnInit {
   @Input() driverData: Partial<Driver> = initialDriverState;
 
   driverDataForm: FormGroup = new FormGroup({
-    firstName: new FormControl(this.driverData.firstName, [Validators.required]),
-    lastName: new FormControl(this.driverData.lastName, [Validators.required]),
-    birthDate: new FormControl(this.driverData.birthDate, [Validators.required]),
-    licenseNumber: new FormControl(this.driverData.licenseNumber, [Validators.required]),
-    curp: new FormControl(this.driverData.curp, [Validators.required]),
-    address: new FormControl(this.driverData.address, [Validators.required]),
-    monthlysalary: new FormControl(this.driverData.monthlysalary, [Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    birthDate: new FormControl('', [Validators.required]),
+    licenseNumber: new FormControl('', [Validators.required]),
+    curp: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    monthlysalary: new FormControl('', [Validators.required]),
   });
 
   constructor(
     private driverService: DriverService,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
 
@@ -45,11 +46,9 @@ export class DriverDetailComponent implements OnInit {
   }
 
   update(): void {
-    if (this.driverData.id) {
-      const driverId = Number(this.driverData.id);
-      this.driverService.updateOne(driverId, this.driverDataForm.value).subscribe(() => {
-        this.router.navigate(['/admin/drivers']);
-      });
-    }
+    const driverId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.driverService.updateOne(driverId, this.driverDataForm.value).subscribe(() => {
+      this.router.navigate(['/admin/drivers']);
+    });
   }
 }
