@@ -31,7 +31,7 @@ export class DriverDetailComponent {
     address: new FormControl(this.driverData.address, [
       Validators.required,
     ]),
-    monthlySalary: new FormControl(this.driverData.monthlySalary, [
+    monthlysalary: new FormControl(this.driverData.monthlysalary, [
       Validators.required,
     ]),
   });
@@ -74,7 +74,7 @@ export class DriverDetailComponent {
     return this.driverDataForm.get('address');
   }
 
-  get monthlySalary() {
-    return this.driverDataForm.get('monthlySalary');
+  get monthlysalary() {
+    return this.driverDataForm.get('monthlysalary');
   }
 }

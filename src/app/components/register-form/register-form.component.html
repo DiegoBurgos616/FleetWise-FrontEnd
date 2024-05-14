@@ -1,13 +1,7 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()" action="">
-  <div class="form-group mb-6">
-    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your username</label>
-    <input type="text" id="username" formControlName="username"
-      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-      required>
-    <small *ngIf="username.touched && username.hasError('required')">Username is required</small>
-  </div>
+ 
   <div class=" form-group mb-6">
-    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Your email</label>
     <input type="email" id="email" formControlName="email"
       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
       placeholder="name@flowbite.com" required>
@@ -15,7 +9,7 @@
     <small *ngIf="email.touched && email.hasError('email')">Email must be valid</small>
   </div>
   <div class="form-group mb-6">
-    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Your password</label>
     <input type="password" id="password" formControlName="password"
       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
       required>
@@ -24,7 +18,7 @@
       and lowercase letter, and at least 8 or more characters</small>
   </div>
   <div class="form-group mb-6">
-    <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat your
+    <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Repeat your
       password</label>
     <input type="password" id="confirmPassword" formControlName="confirmPassword"
       class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -33,6 +27,17 @@
       confirmation not
       matching</small>
   </div>
+
+
+  <div class=" form-group mb-6">
+    <label for="codeInvitation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Your codeInvitation</label>
+    <input type="codeInvitation" id="codeInvitation" formControlName="codeInvitation"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+      placeholder="name@flowbite.com" required>
+    <small *ngIf="codeInvitation.touched && codeInvitation.hasError('required')">codeInvitation is required</small>
+    <small *ngIf="codeInvitation.touched && codeInvitation.hasError('codeInvitation')">codeInvitation must be valid</small>
+  </div>
+ 
 
   <button type="submit" [disabled]="registerForm.invalid"
     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register

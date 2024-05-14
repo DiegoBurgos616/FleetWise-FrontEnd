@@ -1,13 +1,12 @@
-//import { Trip } from "./trip";
 
 export interface Driver {
     firstName: string;
     lastName: string;
-    birthDate: string;
+    birthDate: Date;
     licenseNumber: number;
     curp: string;
     address: string;
-    monthlySalary: number;
+    monthlysalary: number;
 }
 
 export type DriverRequest = Omit<Driver, 'id'>;
@@ -15,19 +14,19 @@ export type DriverRequest = Omit<Driver, 'id'>;
 export const initialDriverState: Driver = {
     firstName: '',
     lastName: '',
-    birthDate: '',
+    birthDate: new Date(),
     licenseNumber: 0,
     curp:  '',
     address: '',
-    monthlySalary: 0,
+    monthlysalary: 0,
 };
 
 export const initialDriverRequest: DriverRequest = {
     firstName: '',
     lastName: '',
-    birthDate: '',
+    birthDate: new Date(),
     licenseNumber: 0,
     curp: '',
     address: '',
-    monthlySalary: 0,
+    monthlysalary: 0,
 };

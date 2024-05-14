@@ -61,6 +61,7 @@ describe('AuthService', () => {
       .register({
         email: 'example@mail.com',
         password: 'strongPassword',
+        codeInvitation: 'aa',
       })
       .subscribe((res) => {
         expect(res).toEqual(expectedResponse);

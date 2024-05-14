@@ -12,6 +12,7 @@ import { CreateRouteComponent } from './pages/create-route/create-route.componen
 import { EditDriverComponent } from './pages/edit-driver/edit-driver.component';
 import { DriversPageComponent } from './pages/drivers-page/driver-page.component';
 import { CreateDriverComponent } from './pages/create-driver/create-driver.component';
+import { AssignmentHistoryComponent } from './components/assignment-history-detail/assignment-history-detail.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
     path: 'vehicles',
     component: VehiclesPageComponent,
   },
+  {
+    path: 'assignmentHistory',
+    component: AssignmentHistoryComponent,
+  },
+  
   {
     path: 'vehicles/:id',
     component: EditVehicleComponent

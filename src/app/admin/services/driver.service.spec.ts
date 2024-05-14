@@ -42,7 +42,7 @@ describe('DriverService', () => {
         licenseNumber: 0,
         curp: 'prueba',
         address: 'prueba',
-        monthlySalary: 0,
+        monthlysalary: 0,
       },
       {
         id: '1',
@@ -52,7 +52,7 @@ describe('DriverService', () => {
         licenseNumber: 0,
         curp: 'prueba',
         address: 'prueba',
-        monthlySalary: 0,
+        monthlysalary: 0,
       },
     ];
 
@@ -80,7 +80,7 @@ describe('DriverService', () => {
       licenseNumber: 0,
       curp: 'prueba',
       address: 'prueba',
-      monthlySalary: 0,
+      monthlysalary: 0,
     };
 
     driverService.create(newDriver).subscribe((data) => {
@@ -108,7 +108,7 @@ describe('DriverService', () => {
       licenseNumber: 0,
       curp: 'prueba',
       address: 'prueba',
-      monthlySalary: 0,
+      monthlysalary: 0,
     };
 
     driverService.getOne(5).subscribe((data) => {
@@ -136,7 +136,7 @@ describe('DriverService', () => {
       licenseNumber: 0,
       curp: 'prueba',
       address: 'prueba',
-      monthlySalary: 0,
+      monthlysalary: 0,
     };
 
     const dataToUpdate = {
@@ -166,7 +166,7 @@ describe('DriverService', () => {
       licenseNumber: 0,
       curp: 'prueba',
       address: 'prueba',
-      monthlySalary: 0,
+      monthlysalary: 0,
     };
 
     driverService.delete(6).subscribe((data) => {

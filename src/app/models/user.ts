@@ -1,6 +1,7 @@
 export interface BaseUser {
   username?: string;
   email: string;
+  codeInvitation: string;
 }
 
 export interface User extends BaseUser {
