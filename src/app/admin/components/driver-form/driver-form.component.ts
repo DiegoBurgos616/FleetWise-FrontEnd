@@ -20,7 +20,7 @@ export class DriverFormComponent {
     licenseNumber: new FormControl(this.driverData.licenseNumber, [Validators.required]),
     curp: new FormControl(this.driverData.curp, [Validators.required]),
     address: new FormControl(this.driverData.address, [Validators.required]),
-    monthlySalary: new FormControl(this.driverData.monthlySalary, [Validators.required]),
+    monthlysalary: new FormControl(this.driverData.monthlysalary, [Validators.required]),
   });
 
 
@@ -30,6 +30,7 @@ export class DriverFormComponent {
   }
 
   create(): void {
+    console.log(this.driverData)
     this.driverService.create(this.driverData).subscribe();
     this.router.navigate(['/admin/drivers']);
   }
@@ -58,7 +59,7 @@ export class DriverFormComponent {
     return this.driverDataForm.get('address');
   }
 
-  get monthlySalary() {
-    return this.driverDataForm.get('monthlySalary');
+  get monthlysalary() {
+    return this.driverDataForm.get('monthlysalary');
   }
 }

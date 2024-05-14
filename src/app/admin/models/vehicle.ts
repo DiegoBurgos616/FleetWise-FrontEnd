@@ -3,7 +3,7 @@ export interface Vehicle {
     model: string;
     vin: string;
     plate: string;
-    purchasedDate: string;
+    purchasedDate: Date;
     cost: number;
     photoUrl?: string;
 }
@@ -15,7 +15,7 @@ export const initialVehicleState: Vehicle = {
     model: "",
     vin: "",
     plate: "",
-    purchasedDate: "",
+    purchasedDate: new Date(),
     cost: 0,
     photoUrl: "",
 };
@@ -25,7 +25,7 @@ export const initialVehicleRequest: VehicleRequest = {
     model: "",
     vin: "",
     plate: "",
-    purchasedDate: "",
+    purchasedDate: new Date(),
     cost: 0,
     photoUrl: "",
 };

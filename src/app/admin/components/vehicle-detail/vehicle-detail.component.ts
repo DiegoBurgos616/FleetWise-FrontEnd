@@ -39,7 +39,7 @@ export class VehicleDetailComponent {
     this.vehicleService
       .updateOne(vehicleId, this.vehicleData)
       .subscribe();
-    this.router.navigate(['/admin/vehicles']);
+    this.router.navigate(['/admin/edit-vehicles']);
   }
 
 

@@ -27,7 +27,7 @@ export class LoginFormComponent {
           password: this.password.value,
         })
         .subscribe((res) => {
-          this.router.navigate(['/admin/users'])
+          this.router.navigate(['/admin/drivers'])
         });
     }
   }
@@ -38,5 +38,8 @@ export class LoginFormComponent {
 
   get password(): FormControl {
     return this.loginForm.get('password') as FormControl;
+  }
+  get codeInvitation(): FormControl {
+    return this.loginForm.get('codeInvitation') as FormControl;
   }
 }

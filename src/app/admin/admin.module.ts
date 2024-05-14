@@ -20,6 +20,7 @@ import { DriverDetailComponent } from './components/driver-detail/driver-detail.
 import { EditDriverComponent } from './pages/edit-driver/edit-driver.component';
 import { DriverFormComponent } from './components/driver-form/driver-form.component';
 import { CreateDriverComponent } from './pages/create-driver/create-driver.component';
+import { AssignmentHistoryComponent } from './components/assignment-history-detail/assignment-history-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { CreateDriverComponent } from './pages/create-driver/create-driver.compo
     DriverDetailComponent,
     EditDriverComponent,
     DriverFormComponent,
+    
+    AssignmentHistoryComponent,
     CreateDriverComponent
   ],
   imports: [

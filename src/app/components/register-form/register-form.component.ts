@@ -14,16 +14,17 @@ export class RegisterFormComponent {
 
   registerForm: FormGroup = new FormGroup(
     {
-      username: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(4),
-      ]),
+      
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
         Validators.required,
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}'),
       ]),
       confirmPassword: new FormControl(null, [Validators.required]),
+      codeInvitation: new FormControl(null, [
+        Validators.required,
+       
+      ]),
     },
     {
       validators: CustomValidators.match,
@@ -36,6 +37,7 @@ export class RegisterFormComponent {
         .register({
           email: this.email.value,
           password: this.password.value,
+          codeInvitation: this.codeInvitation.value,
         })
         .pipe(tap(() => this.router.navigate(['/login'])))
         .subscribe();
@@ -49,6 +51,10 @@ export class RegisterFormComponent {
 
   get email(): FormControl {
     return this.registerForm.get('email') as FormControl;
+  }
+
+  get codeInvitation(): FormControl {
+    return this.registerForm.get('codeInvitation') as FormControl;
   }
 
   get password(): FormControl {
