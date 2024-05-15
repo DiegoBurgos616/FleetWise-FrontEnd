@@ -29,10 +29,8 @@ const routes: Routes = [
     path: 'createUser',
     component: CreateUserComponent,
   },
-  {
-    path: 'vehicles',
-    component: VehiclesPageComponent,
-  },
+  
+  
   {
     path: 'assignationHistory',
     component: AssignmentHistoryPageComponent,
@@ -45,26 +43,23 @@ const routes: Routes = [
     path: 'assignmentHistory/:id',
     component: EditAssignmentHistoryComponent,
   },
+  
+
+
   {
-    path: 'vehicles/:id',
-    component: EditVehicleComponent
+    path: 'vehicles',
+    component: VehiclesPageComponent,
+  },
+  {
+    path: 'vehicle/:id',
+    component: EditVehicleComponent,
   },
   {
     path: 'createVehicle',
     component: CreateVehicleComponent,
   },
-  {
-    path: 'routes',
-    component: RoutesPageComponent,
-  },
-  {
-    path: 'routes/:id',
-    component: EditRouteComponent,
-  },
-  {
-    path: 'createRoute',
-    component: CreateRouteComponent,
-  },
+
+
   {
     path: 'drivers',
     component: DriversPageComponent,
@@ -77,10 +72,24 @@ const routes: Routes = [
     path: 'createDriver',
     component: CreateDriverComponent,
   },
+  
+  
   {
-    path: 'assignment-history',
-    component: AssignmentHistoryPageComponent,
+    path: 'routes',
+    component: RoutesPageComponent,
   },
+  {
+    path: 'routes/:id',
+    component: EditRouteComponent,
+  },
+  {
+    path: 'createRoute',
+    component: CreateRouteComponent,
+  },
+  
+  
+ 
+  
   {
     path: '**',
     redirectTo: 'users',

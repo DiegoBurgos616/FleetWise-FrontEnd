@@ -27,6 +27,7 @@ export class VehicleFormComponent {
   }
 
   create(): void {
+    console.log(this.vehicleData)
     this.vehicleService.create(this.vehicleData).subscribe();
     this.router.navigate(['/admin/vehicles']);
   }

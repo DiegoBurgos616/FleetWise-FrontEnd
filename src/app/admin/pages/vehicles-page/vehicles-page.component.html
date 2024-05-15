@@ -22,7 +22,7 @@
     </thead>
     <tbody *ngFor="let vehicle of vehicles">
       <tr class="text">
-        <td class="border-spacing-1">{{ vehicle.brand }}</td> <!--Cambiar a vehicle.id-->
+        <td class="border-spacing-1">{{ vehicle.id }}</td> <!--Cambiar a vehicle.id-->
         <td class="border-spacing-1">{{ vehicle.brand }}</td>
         <td class="border-spacing-1">{{ vehicle.model }}</td>
         <td class="border-spacing-1">{{ vehicle.vin }}</td>
@@ -32,13 +32,13 @@
         <td class="border-spacing-1">{{ vehicle.photoUrl }}</td>
         <td>
           <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            routerLink="/admin/vehicle/{{vehicle.brand}}"> <!--vehicle-id-->
+            routerLink="/admin/vehicle/{{vehicle.id}}"> <!--vehicle-id-->
             Edit
           </button>
         </td>
         <td>
           <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            (click)="delete(vehicle.brand)"><!--Cambiar a vehicle.id-->
+            (click)="delete(vehicle.id)"><!--Cambiar a vehicle.id-->
             Delete
           </button>
         </td>
