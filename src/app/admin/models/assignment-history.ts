@@ -1,5 +1,6 @@
 
 export interface AssignmentHistory {
+    id?:number;
     vehicleId: number;
     driverId: number;
 }

@@ -36,14 +36,21 @@ export class AssignmentHistoryPageComponent {
     });
   }
 
-  delete(vehicleId?: string): void {
-    const id = Number(vehicleId);
-    this.assignmentHistoryService
-      .delete(id)
-      .pipe(tap(() => this.router.navigate(['/admin/assignment-history'])))
-      .subscribe(() => {
-        this.getAllAssignmentHistory();
-        this.loadDrivers(); // Vuelve a cargar la lista de conductores después de eliminar una asignación
-      });
+ 
+
+
+  delete(assignmentHistoryId: number | undefined): void {
+    if (assignmentHistoryId) { // Verificar si driverId no es undefined
+      this.assignmentHistoryService
+        .delete(assignmentHistoryId)
+        .pipe(tap(() => this.getAllAssignmentHistory())) // Actualización de la lista después de la eliminación
+        .subscribe(() => {
+          // Opcional: Redirigir después de la eliminación
+          this.router.navigate(['/admin/assignationHistory']);
+        });
+    }
   }
+  
+
+  
 }
