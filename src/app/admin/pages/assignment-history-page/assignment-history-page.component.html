@@ -1,10 +1,10 @@
-<div class="container mx-auto py-2">
-  <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
-    <thead>
-      <tr class="text">
-        <th class="border-spacing-1">Vehicle ID</th>
-        <th class="border-spacing-1">Driver ID</th>
-        <th class="border-spacing-1">
+<div class="container mx-auto py-4">
+  <table class="table-auto border-separate border-spacing-0 w-full bg-white rounded-lg shadow-lg overflow-hidden">
+    <thead class="bg-gray-700 text-white">
+      <tr>
+        <th class="p-4 text-center">Vehicle ID</th>
+        <th class="p-4 text-center">Driver ID</th>
+        <th class="p-4 text-center">
           <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             routerLink="/admin/createAssignmentHistory">
             Create
@@ -12,21 +12,21 @@
         </th>
       </tr>
     </thead>
-    <tbody *ngFor="let assignmentHistory of assignmentHistory">
-      <tr class="text">
-        <td class="border-spacing-1">{{ assignmentHistory.vehicleId }}</td>
-        <td class="border-spacing-1">{{ assignmentHistory.driverId }}</td>
-        <td>
+    <tbody>
+      <tr class="border-b last:border-0 hover:bg-gray-100" *ngFor="let assignmentHistory of assignmentHistory">
+        <td class="p-4 border-t border-gray-300">{{ assignmentHistory.vehicleId }}</td>
+        <td class="p-4 border-t border-gray-300">{{ assignmentHistory.driverId }}</td>
+        <td class="p-4 border-t border-gray-300">
           <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             [routerLink]="['/admin/assignmentHistory', assignmentHistory.id]">
             Edit
           </button>
         </td>
-        <td>
+        <td class="p-4 border-t border-gray-300">
           <button type="button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           (click)="delete(assignmentHistory.id)">
           Delete
-        </button>
+          </button>
         </td>
       </tr>
     </tbody>

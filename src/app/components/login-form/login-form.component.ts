@@ -32,6 +32,11 @@ export class LoginFormComponent {
     }
   }
 
+  register(): void {
+    this.router.navigate(['/register'])
+}
+
+
   get email(): FormControl {
     return this.loginForm.get('email') as FormControl;
   }
