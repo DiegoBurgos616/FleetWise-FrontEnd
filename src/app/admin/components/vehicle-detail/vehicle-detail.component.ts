@@ -27,47 +27,33 @@ export class VehicleDetailComponent {
   });
 
   ngOnInit(): void {
-    Object.assign(this.vehicleData, initialVehicleState);
+    this.vehicleDataForm.patchValue(this.vehicleData);
   }
 
-  ngOnDestroy(): void {
-    Object.assign(this.vehicleData, initialVehicleState);
+  save(): void {
+    if (this.vehicleData.id) {
+      this.update();
+    } else {
+      this.create();
+    }
   }
+
+
+
+  create(): void {
+    this.vehicleService.create(this.vehicleDataForm.value).subscribe(() => {
+      this.router.navigate(['/admin/vehicles']);
+    });
+  }
+
 
   update(): void {
     const vehicleId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.vehicleService
       .updateOne(vehicleId, this.vehicleData)
       .subscribe();
-    this.router.navigate(['/admin/edit-vehicles']);
-  }
+      this.router.navigate(['/admin/vehicles']);
+    }
 
 
-
-  get brand() {
-    return this.vehicleDataForm.get('brand');
-  }
-
-  get model() {
-    return this.vehicleDataForm.get('model');
-  }
-
-  get vin() {
-    return this.vehicleDataForm.get('vin');
-  }
-
-  get plate() {
-    return this.vehicleDataForm.get('plate');
-  }
-
-  get purchasedDate() {
-    return this.vehicleDataForm.get('purchasedDate');
-  }
-
-  get cost() {
-    return this.vehicleDataForm.get('cost');
-  }
-  get photoURL() {
-    return this.vehicleDataForm.get('photoUrl');
-  }
 }

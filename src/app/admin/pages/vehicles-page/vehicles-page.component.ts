@@ -23,11 +23,17 @@ export class VehiclesPageComponent {
     });
   }
 
-  delete(vehicleId?: string): void {
-    const id = Number(vehicleId);
-    this.vehicleService
-      .delete(id)
-      .pipe(tap(() => this.router.navigate(['/admin/vehicles'])))
-      .subscribe((res) => this.getAllVehicles());
+
+
+  delete(vehicleId: number | undefined): void {
+    if (vehicleId) { // Verificar si driverId no es undefined
+      this.vehicleService
+        .delete(vehicleId)
+        .pipe(tap(() => this.getAllVehicles())) // Actualización de la lista después de la eliminación
+        .subscribe(() => {
+          // Opcional: Redirigir después de la eliminación
+          this.router.navigate(['/admin/vehicles']);
+        });
+    }
   }
 }
