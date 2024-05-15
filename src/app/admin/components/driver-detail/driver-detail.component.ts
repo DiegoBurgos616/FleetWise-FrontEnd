@@ -11,31 +11,47 @@ import { Driver, initialDriverState } from '../../models/driver';
 export class DriverDetailComponent implements OnInit {
   @Input() driverData: Partial<Driver> = initialDriverState;
 
-  driverDataForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    birthDate: new FormControl('', [Validators.required]),
-    licenseNumber: new FormControl('', [Validators.required]),
-    curp: new FormControl('', [Validators.required]),
-    address: new FormControl('', [Validators.required]),
-    monthlysalary: new FormControl('', [Validators.required]),
-  });
+  driverDataForm: FormGroup;
 
   constructor(
     private driverService: DriverService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.driverDataForm = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      birthDate: new FormControl('', [Validators.required]),
+      licenseNumber: new FormControl('', [Validators.required]),
+      curp: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      monthlysalary: new FormControl('', [Validators.required]),
+    });
+  }
 
   ngOnInit(): void {
-    this.driverDataForm.patchValue(this.driverData);
+    this.loadDriverData();
+  }
+
+  loadDriverData(): void {
+    const driverId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    if (driverId) {
+      this.driverService.getOne(driverId).subscribe((data: Partial<Driver>) => {
+        this.driverDataForm.patchValue(data);
+      });
+    } else {
+      this.driverDataForm.patchValue(this.driverData);
+    }
   }
 
   save(): void {
-    if (this.driverData.id) {
-      this.update();
-    } else {
-      this.create();
+    if (this.driverDataForm.valid) {
+      const driverId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+      if (driverId) {
+        this.update(driverId);
+      } else {
+        this.create();
+      }
     }
   }
 
@@ -45,8 +61,7 @@ export class DriverDetailComponent implements OnInit {
     });
   }
 
-  update(): void {
-    const driverId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  update(driverId: number): void {
     this.driverService.updateOne(driverId, this.driverDataForm.value).subscribe(() => {
       this.router.navigate(['/admin/drivers']);
     });

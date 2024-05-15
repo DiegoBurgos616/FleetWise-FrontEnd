@@ -20,7 +20,7 @@ export class AssignmentHistoryService {
   getAll(): Observable<AssignmentHistory[]> {
     return this.httpClient.get<AssignmentHistory[]>(
       `${environment().apiURL}/assignment-history`,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
@@ -28,14 +28,14 @@ export class AssignmentHistoryService {
     return this.httpClient.post<AssignmentHistory>(
       `${environment().apiURL}/assignment-history`,
       assignmentHistory,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
   getOne(id: number): Observable<AssignmentHistory> {
     return this.httpClient.get<AssignmentHistory>(
       `${environment().apiURL}/assignment-history/${id}`,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
@@ -43,14 +43,31 @@ export class AssignmentHistoryService {
     return this.httpClient.put<AssignmentHistory>(
       `${environment().apiURL}/assignment-history/${id}`,
       assignmentHistory,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
   delete(id: number): Observable<AssignmentHistory> {
     return this.httpClient.delete<AssignmentHistory>(
       `${environment().apiURL}/assignment-history/${id}`,
-      this.httpOptions
+      this.getHttpOptions()
     );
+  }
+
+  // Define el método para obtener el historial de asignación por su ID
+  getAssignmentHistoryById(id: number): Observable<AssignmentHistory> {
+    return this.httpClient.get<AssignmentHistory>(
+      `${environment().apiURL}/assignment-history/${id}`,
+      this.getHttpOptions()
+    );
+  }
+
+  private getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
   }
 }
