@@ -15,11 +15,18 @@ export class EditAssignmentHistoryComponent {
     private router: Router
   ) {}
 
+ 
+
   ngOnInit(): void {
     const assignmentHistoryId = Number(this.activedRoute.snapshot.paramMap.get('id'));
-    this.assignmentService.getOne(assignmentHistoryId).subscribe((res) => {
-      this.assignmentHistoryEditable = res;
-    });
+    if (!isNaN(assignmentHistoryId)) {
+      this.assignmentService.getOne(assignmentHistoryId).subscribe((res) => {
+        this.assignmentHistoryEditable = res;
+      });
+    } else {
+      console.error("Invalid driver ID:", assignmentHistoryId);
+      // Podrías redirigir a una página de error o manejar esta situación de otra manera.
+    }
   }
 
 }
