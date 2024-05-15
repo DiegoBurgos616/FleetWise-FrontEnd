@@ -1,16 +1,16 @@
-<div class="container mx-auto py-2">
-    <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
-      <thead>
-        <tr class="text">
-          <th class="border-spacing-1">id</th>
-          <th class="border-spacing-1">First name</th>
-          <th class="border-spacing-1">Last name</th>
-          <th class="border-spacing-1">Birth date</th>
-          <th class="border-spacing-1">License number</th>
-          <th class="border-spacing-1">CURP</th>
-          <th class="border-spacing-1">Address</th>
-          <th class="border-spacing-1">Monthly salary</th>
-          <th class="border-spacing-1">
+<div class="container mx-auto py-4">
+    <table class="table-auto border-separate border-spacing-0 w-full bg-white rounded-lg shadow-lg overflow-hidden">
+      <thead class="bg-gray-700 text-white">
+        <tr>
+          <th class="p-4 text-center">ID</th>
+          <th class="p-4 text-center">First name</th>
+          <th class="p-4 text-center">Last name</th>
+          <th class="p-4 text-center">Birth date</th>
+          <th class="p-4 text-center">License number</th>
+          <th class="p-4 text-center">CURP</th>
+          <th class="p-4 text-center">Address</th>
+          <th class="p-4 text-center">Monthly salary</th>
+          <th class="p-4 text-center">
             <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
               routerLink="/admin/createDriver">
               Create
@@ -18,27 +18,27 @@
           </th>
         </tr>
       </thead>
-      <tbody *ngFor="let driver of drivers">
-        <tr class="text">
-          <td class="border-spacing-1">{{ driver.id }}</td> <!--Cambiar a driver.id-->
-          <td class="border-spacing-1">{{ driver.firstName }}</td>
-          <td class="border-spacing-1">{{ driver.lastName }}</td>
-          <td class="border-spacing-1">{{ driver.birthDate }}</td>
-          <td class="border-spacing-1">{{ driver.licenseNumber }}</td>
-          <td class="border-spacing-1">{{ driver.curp }}</td>
-          <td class="border-spacing-1">{{ driver.address }}</td>
-          <td class="border-spacing-1">{{ driver.monthlysalary }}</td>
-          <td>
+      <tbody>
+        <tr *ngFor="let driver of drivers" class="border-b last:border-0 hover:bg-gray-100">
+          <td class="p-4 border-t border-gray-300">{{ driver.id }}</td> <!--Cambiar a driver.id-->
+          <td class="p-4 border-t border-gray-300">{{ driver.firstName }}</td>
+          <td class="p-4 border-t border-gray-300">{{ driver.lastName }}</td>
+          <td class="p-4 border-t border-gray-300">{{ driver.birthDate }}</td>
+          <td class="p-4 border-t border-gray-300">{{ driver.licenseNumber }}</td>
+          <td class="p-4 border-t border-gray-300">{{ driver.curp }}</td>
+          <td class="p-4 border-t border-gray-300">{{ driver.address }}</td>
+          <td class="p-4 border-t border-gray-300">{{ driver.monthlysalary }}</td>
+          <td class="p-4 border-t border-gray-300">
             <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              routerLink="/admin/drivers/{{driver.id}}"> <!--Cambiar a driver.id-->
+            [routerLink]="['/admin/drivers', driver.id]">
               Edit
             </button>
           </td>
-          <td>
+          <td class="p-4 border-t border-gray-300">
             <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
             (click)="delete(driver.id)">
-      Delete
-    </button>
+            Delete
+            </button>
           </td>
         </tr>
       </tbody>
