@@ -5,7 +5,6 @@
         <th class="border-spacing-1">Vehicle ID</th>
         <th class="border-spacing-1">Driver ID</th>
 
-
         <th class="border-spacing-1">
           <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             routerLink="/admin/createAssignmentHistory">
@@ -24,13 +23,19 @@
             Edit
           </button>
         </td>
+
         <td>
           <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            (click)="delete(assignmentHistory.vehicleId)"><!--Cambiar a vehicle.id-->
+            (click)="delete(assignmentHistory.vehicleId.toString())">
             Delete
           </button>
         </td>
+        
       </tr>
+      
     </tbody>
   </table>
+  <a *ngFor="let driver of drivers"> {{ driver.id }}</a>
 </div>
+
+

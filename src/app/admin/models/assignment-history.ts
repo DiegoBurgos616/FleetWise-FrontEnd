@@ -1,17 +1,17 @@
 
 export interface AssignmentHistory {
-    vehicleId: string;
+    vehicleId: number;
     driverId: number;
 }
 
 export type AssignmentHistoryRequest = Omit<AssignmentHistory, 'id'>;
 
 export const initialAssignmentHistoryState: AssignmentHistory = {
-    vehicleId: '',
+    vehicleId: 0,
     driverId: 0,
 };
 
 export const initialAssignmentHistoryRequest: AssignmentHistoryRequest = {
-    vehicleId: '',
+    vehicleId: 0,
     driverId: 0,
 };

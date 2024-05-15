@@ -1,44 +1,42 @@
-<div class="container mx-auto py-2">
-  <table class="table-fixed border-separate border-spacing-2 border border-slate-400">
-    <thead>
-      <tr class="text">
-        <th class="border-spacing-1">id</th>
-        <th class="border-spacing-1">Brand</th>
-        <th class="border-spacing-1">Model</th>
-        <th class="border-spacing-1">Vin</th>
-        <th class="border-spacing-1">Plate</th>
-        <th class="border-spacing-1">Purchased Date</th>
-        <th class="border-spacing-1">Cost</th>
-        <th class="border-spacing-1">Photo</th>
-
-
-        <th class="border-spacing-1">
-          <button type="button" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+<div class="container mx-auto py-4">
+  <table class="table-auto border-separate border-spacing-0 w-full bg-white rounded-lg shadow-lg overflow-hidden">
+    <thead class="bg-gray-700 text-white">
+      <tr>
+        <th class="p-4 text-left">ID</th>
+        <th class="p-4 text-left">Brand</th>
+        <th class="p-4 text-left">Model</th>
+        <th class="p-4 text-left">Vin</th>
+        <th class="p-4 text-left">Plate</th>
+        <th class="p-4 text-left">Purchased Date</th>
+        <th class="p-4 text-left">Cost</th>
+        <th class="p-4 text-left">Photo</th>
+        <th class="p-4 text-left" colspan="2">
+          <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             routerLink="/admin/createVehicle">
             Create
           </button>
         </th>
       </tr>
     </thead>
-    <tbody *ngFor="let vehicle of vehicles">
-      <tr class="text">
-        <td class="border-spacing-1">{{ vehicle.id }}</td> <!--Cambiar a vehicle.id-->
-        <td class="border-spacing-1">{{ vehicle.brand }}</td>
-        <td class="border-spacing-1">{{ vehicle.model }}</td>
-        <td class="border-spacing-1">{{ vehicle.vin }}</td>
-        <td class="border-spacing-1">{{ vehicle.plate }}</td>
-        <td class="border-spacing-1">{{ vehicle.purchasedDate }}</td>
-        <td class="border-spacing-1">{{ vehicle.cost }}</td>
-        <td class="border-spacing-1">{{ vehicle.photoUrl }}</td>
-        <td>
-          <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            routerLink="/admin/vehicle/{{vehicle.id}}"> <!--vehicle-id-->
+    <tbody>
+      <tr *ngFor="let vehicle of vehicles" class="border-b last:border-0 hover:bg-gray-100">
+        <td class="p-4 border-t border-gray-300">{{ vehicle.id }}</td>
+        <td class="p-4 border-t border-gray-300">{{ vehicle.brand }}</td>
+        <td class="p-4 border-t border-gray-300">{{ vehicle.model }}</td>
+        <td class="p-4 border-t border-gray-300">{{ vehicle.vin }}</td>
+        <td class="p-4 border-t border-gray-300">{{ vehicle.plate }}</td>
+        <td class="p-4 border-t border-gray-300">{{ vehicle.purchasedDate }}</td>
+        <td class="p-4 border-t border-gray-300">{{ vehicle.cost }}</td>
+        <td class="p-4 border-t border-gray-300">{{ vehicle.photoUrl }}</td>
+        <td class="p-4 border-t border-gray-300">
+          <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            [routerLink]="['/admin/vehicle', vehicle.id]">
             Edit
           </button>
         </td>
-        <td>
-          <button type="button" class="btn bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            (click)="delete(vehicle.id)"><!--Cambiar a vehicle.id-->
+        <td class="p-4 border-t border-gray-300">
+          <button type="button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            (click)="delete(vehicle.id)">
             Delete
           </button>
         </td>
