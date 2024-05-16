@@ -2,6 +2,8 @@
   <table class="table-auto border-separate border-spacing-0 w-full bg-white rounded-lg shadow-lg overflow-hidden">
     <thead class="bg-gray-700 text-white">
       <tr>
+        <th class="p-2 text-center">ID</th> <!-- Reducimos el padding a p-2 para hacer la tabla más estrecha -->
+
         <th class="p-2 text-center">Vehicle ID</th> <!-- Reducimos el padding a p-2 para hacer la tabla más estrecha -->
         <th class="p-2 text-center">Driver ID</th>
         <th class="p-2 text-center" colspan="2"> <!-- Aquí especificamos colspan="2" para ocupar dos celdas -->
@@ -16,6 +18,8 @@
     </thead>
     <tbody>
       <tr class="border-b last:border-0 hover:bg-gray-100" *ngFor="let assignmentHistory of assignmentHistory">
+        <td class="p-2 border-t border-gray-300 text-center">{{ assignmentHistory.id }}</td> <!-- Reducimos el padding a p-2 para hacer la tabla más estrecha -->
+
         <td class="p-2 border-t border-gray-300 text-center">{{ assignmentHistory.vehicleId }}</td> <!-- Reducimos el padding a p-2 para hacer la tabla más estrecha -->
         <td class="p-2 border-t border-gray-300 text-center">{{ assignmentHistory.driverId }}</td>
         <td class="p-2 border-t border-gray-300 text-center">
