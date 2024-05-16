@@ -7,12 +7,12 @@ pipeline {
                     writeFile file: 'src/assets/.env', text: readFile(env_file)
                 }
                 sh '''BRANCH=$(echo $GIT_BRANCH | cut -b 8-11)
-                docker build -t frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID .'''
+                docker build -t frontend-fleetwise-$BRzANCH:1.0.0-$BUILD_ID .'''
             }
         }
         stage('Deploy') {
             steps {
-                sh '''BRANCH=$(echo $do | cut -b 8-11);
+                sh '''BRANCH=$(echo $do)
                 docker run --rm --name frontend-fleetwise -d -p 80:80 frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID'''
             }
         }
