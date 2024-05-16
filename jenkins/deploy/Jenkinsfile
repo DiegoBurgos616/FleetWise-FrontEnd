@@ -6,8 +6,8 @@ pipeline {
                 withCredentials([file(credentialsId: 'env-vars-frontend-fleetwise', variable: 'env_file')]) {
                     writeFile file: 'src/assets/.env', text: readFile(env_file)
                 }
-                sh '''BRANCH=$(echo $GIT_BRANCH | cut -b 8-11)
-                docker build -t frontend-fleetwise-$BRzANCH:1.0.0-$BUILD_ID .'''
+                sh '''BRANCH=$(echo $GIT_BRANCH)
+                docker build -t frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID .'''
             }
         }
         stage('Deploy') {
