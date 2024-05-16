@@ -1,4 +1,4 @@
-<div class="container mx-auto py-4">
+<div class="container mx-auto py-4 overflow-x-auto">
   <table class="table-auto border-separate border-spacing-0 w-full bg-white rounded-lg shadow-lg overflow-hidden">
     <thead class="bg-gray-700 text-white">
       <tr>
@@ -26,12 +26,9 @@
         <td class="p-4 border-t border-gray-300">{{ vehicle.vin }}</td>
         <td class="p-4 border-t border-gray-300">{{ vehicle.plate }}</td>
         <td class="p-4 border-t border-gray-300">{{ vehicle.purchasedDate }}</td>
-        <td class="p-4 border-t border-gray-300">{{ vehicle.cost }}</td>
-        <!-- Aquí se muestra la imagen -->
-        <td class="p-4 border-t border-gray-300">
+        <td class="p-4 border-t border-gray-300">{{ vehicle.cost }}</td>        <td class="p-4 border-t border-gray-300">
           <img [src]="vehicle.photoUrl" alt="Vehicle Photo" class="w-21 h-24 object-cover rounded-md mx-auto">
         </td>
-        
         <!-- Resto de las columnas -->
         <td class="p-4 border-t border-gray-300">
           <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
