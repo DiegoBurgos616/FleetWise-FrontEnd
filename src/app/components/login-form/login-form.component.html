@@ -1,26 +1,40 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" action="">
-  <div class="mb-6">
-    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Your email</label>
-    <input type="email" id="email"
-      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-      formControlName="email" placeholder="name@example.com" required>
-    <small *ngIf="email.touched && email.hasError('required')">Email is required</small>
-  </div>
-  <div class="mb-6">
-    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">Your password</label>
-    <input type="password" id="password"
-      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-      formControlName="password" required>
-    <small *ngIf="password.touched && password.hasError('required')">Password is required</small>
-  </div>
 
+<h2 class="text-3xl font-bold dark:text-dark text-center mx-auto mt-4 mb-4">Welcome to FleetWise!</h2>
+
+<div class="container max-w-sm min-w-min">
+  <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 white:bg-gray-800 white:border-gray-700 white:hover:bg-gray-700">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="flex flex-wrap -mx-3 mb-6">
+
+        <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
+          <input type="email" id="email" formControlName="email" placeholder="name@example.com"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light">
+          <small *ngIf="email.touched && email.hasError('required')" class="text-red-500">Email is required</small>
+        </div>
+        <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0 mt-6">
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" formControlName="password"
+          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light">
+          <small *ngIf="password.touched && password.hasError('required')" class="text-red-500">Password is required</small>
+        </div>
+
+    </div> 
+
+        <div style="text-align: center;">
+          <button type="submit" [disabled]="!loginForm.valid"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center white:bg-blue-600 white:hover:bg-blue-700 white:focus:ring-blue-800">Login</button>
+        </div>
+
+        <div class="mt-6">
+          <p class="text-sm text-center text-gray-600">Don't have an account? 
+            <button type="button" (click)="register()"
+            class="font-medium text-blue-600 hover:text-blue-500">Register</button>
+          </p>
+        </div>
+    
+    </form>
+  </div>
+    
   
-
-  <button type="submit" [disabled]="!loginForm.valid"
-    class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
-    <br>
-    <br>
-    <button type="button" (click)="register()"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register</button>
-
-  </form>
+</div>
