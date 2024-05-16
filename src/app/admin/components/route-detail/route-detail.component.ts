@@ -1,42 +1,54 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Route, initialRouteState } from '../../models/route';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouteService } from '../../services/route.service';
+import { AssignmentHistoryService } from '../../services/assignment-history.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-detail',
   templateUrl: './route-detail.component.html',
 })
-export class RouteDetailComponent {
+export class RouteDetailComponent implements OnInit, OnDestroy{
   @Input() routeData: Partial<Route> = initialRouteState;
+  assignmentHistory: any[] = [];
+  routeDataForm: FormGroup;
 
   constructor(
     private routeService: RouteService,
     private activatedRoute: ActivatedRoute,
+    private assignmentHistoryService: AssignmentHistoryService,
     private router: Router
-  ) {}
-  routeDataForm: FormGroup = new FormGroup({
-    routeName: new FormControl(this.routeData.routeName, [Validators.required]),
-    problemDescription: new FormControl(this.routeData.problemDescription, [Validators.required]),
-    comments: new FormControl(this.routeData.comments, [Validators.required]),
-    startLatitude: new FormControl(this.routeData.startLatitude, [Validators.required]),
-    startLongitude: new FormControl(this.routeData.startLongitude, [Validators.required]),
-    endLatitude: new FormControl(this.routeData.endLatitude, [Validators.required]),
-    endLongitude: new FormControl(this.routeData.endLongitude, [Validators.required]),
-    AssignedHistoryId: new FormControl(this.routeData.assignedHistoryId, [Validators.required]),
-
-  });
-
-
+  ) 
+  {
+    this.routeDataForm = new FormGroup({
+      routeName: new FormControl(this.routeData.routeName, [Validators.required]),
+      problemDescription: new FormControl(this.routeData.problemDescription, [Validators.required]),
+      comments: new FormControl(this.routeData.comments, [Validators.required]),
+      startLatitude: new FormControl(this.routeData.startLatitude, [Validators.required]),
+      startLongitude: new FormControl(this.routeData.startLongitude, [Validators.required]),
+      endLatitude: new FormControl(this.routeData.endLatitude, [Validators.required]),
+      endLongitude: new FormControl(this.routeData.endLongitude, [Validators.required]),
+      AssignedHistoryId: new FormControl(this.routeData.assignedHistoryId, [Validators.required]),
+  
+    });
+  }
   
 
   ngOnInit(): void {
-    Object.assign(this.routeData, initialRouteState);
+    this.loadRouteData();
+    this.loadAssignmentHistory();
   }
 
   ngOnDestroy(): void {
     Object.assign(this.routeData, initialRouteState);
+  }
+
+    loadRouteData(): void {
+    const route = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.routeService.getOne(route).subscribe((data: Partial<Route>) => {
+      this.routeDataForm.patchValue(data);
+    });
   }
 
   update(): void {
@@ -45,6 +57,12 @@ export class RouteDetailComponent {
       .updateOne(routeId, this.routeData)
       .subscribe();
     this.router.navigate(['/admin/route']);
+  }
+
+  loadAssignmentHistory(): void {
+    this.assignmentHistoryService.getAll().subscribe((res: any[]) => {
+      this.assignmentHistory = res;
+    });
   }
 
   get routeName() {
