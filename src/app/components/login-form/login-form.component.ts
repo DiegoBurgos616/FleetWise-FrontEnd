@@ -21,16 +21,21 @@ export class LoginFormComponent {
 
   login(): void {
     if (this.loginForm.valid) {
+      const loginData = {
+        email: this.email.value,
+        password: this.password.value,
+      };
+  
+      console.log('Datos enviados:', loginData);
+  
       this.authService
-        .login({
-          email: this.email.value,
-          password: this.password.value,
-        })
+        .login(loginData)
         .subscribe((res) => {
-          this.router.navigate(['/admin/drivers'])
+          this.router.navigate(['/admin/drivers']);
         });
     }
   }
+  
 
   register(): void {
     this.router.navigate(['/register'])
@@ -44,7 +49,5 @@ export class LoginFormComponent {
   get password(): FormControl {
     return this.loginForm.get('password') as FormControl;
   }
-  get codeInvitation(): FormControl {
-    return this.loginForm.get('codeInvitation') as FormControl;
-  }
+ 
 }
