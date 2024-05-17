@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Route } from '../../models/route';
 import { RouteService } from '../../services/route.service';
+import { AssignmentHistoryService } from 'app/admin/services/assignment-history.service';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 
@@ -10,11 +11,17 @@ import { tap } from 'rxjs';
 })
 export class RoutesPageComponent {
   routes: Route[] = [];
+  assignmentHistory: any[] = [];
 
-  constructor(private routeService: RouteService, private router: Router) {}
+  constructor(
+    private routeService: RouteService, 
+    private assignmentHistoryService: AssignmentHistoryService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAllRoutes();
+    this.loadAssignmentHistory();
   }
 
   getAllRoutes(): void {
@@ -23,11 +30,21 @@ export class RoutesPageComponent {
     });
   }
 
-  delete(routeId?: string): void {
-    const id = Number(routeId);
-    this.routeService
-      .delete(id)
-      .pipe(tap(() => this.router.navigate(['/admin/routes'])))
-      .subscribe((res) => this.getAllRoutes());
+  loadAssignmentHistory(): void {
+    this.assignmentHistoryService.getAll().subscribe((res: any[]) => {
+      this.assignmentHistory = res;
+    });
+  }
+
+
+  delete(routeId: number | undefined): void {
+    if (routeId) {
+      this.assignmentHistoryService
+        .delete(routeId)
+        .pipe(tap(() => this.getAllRoutes()))
+        .subscribe(() => {
+          this.router.navigate(['/admin/route']);
+        });
+    }
   }
 }
