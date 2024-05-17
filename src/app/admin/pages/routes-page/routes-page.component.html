@@ -23,7 +23,7 @@
     </thead>
     <tbody>
       <tr class="border-b last:border-0 hover:bg-gray-100" *ngFor="let route of routes">
-        <td class="p-4 border-t border-gray-300">{{ route.routeName }}</td> <!--cambiar a route.id-->
+        <td class="p-4 border-t border-gray-300">{{ route.id }}</td> <!--cambiar a route.id-->
         <td class="p-4 border-t border-gray-300">{{ route.routeName }}</td>
         <td class="p-4 border-t border-gray-300">{{ route.problemDescription }}</td>
         <td class="p-4 border-t border-gray-300">{{ route.comments }}</td>
@@ -34,7 +34,7 @@
         <td class="p-4 border-t border-gray-300">{{ route.assignedHistoryId }}</td>
         <td class="p-4 border-t border-gray-300">
           <button type="button" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            routerLink="/admin/routes/{{route.routeName}}"> <!--Cambiar a route.id-->
+            routerLink="/admin/route/{{route.id}}"> <!--Cambiar a route.id-->
             Edit
           </button>
         </td>
