@@ -1,5 +1,7 @@
 <br>
 <div class="container max-w-sm min-w-min">
+  <h2 class="text-3xl font-bold dark:text-dark text-center mx-auto mt-4 mb-4">Welcome! Sign up and start your journey with us.  </h2>
+
   <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 white:bg-gray-800 white:border-gray-700 white:hover:bg-gray-700">
     <form [formGroup]="registerForm" (ngSubmit)="register()" action="">
       <div class="flex flex-wrap -mx-3 mb-6">
@@ -49,6 +51,14 @@
       <button type="submit" [disabled]="registerForm.invalid"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center white:bg-blue-600 white:hover:bg-blue-700 white:focus:ring-blue-800">Register
         new account</button>
+    </div>
+
+
+    <div class="mt-6">
+      <p class="text-sm text-center text-gray-600">Already have an account?
+        <button type="button" (click)="pageRegister()"
+        class="font-medium text-blue-600 hover:text-blue-500">Sign In</button>
+      </p>
     </div>
 
     </form>

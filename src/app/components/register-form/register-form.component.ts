@@ -45,6 +45,10 @@ export class RegisterFormComponent {
     this.registerForm.reset();
   }
 
+  pageRegister(): void {
+    this.router.navigate(['/login'])
+}
+
   get username(): FormControl {
     return this.registerForm.get('username') as FormControl;
   }
