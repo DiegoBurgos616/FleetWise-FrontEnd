@@ -48,9 +48,8 @@ export class RouteFormComponent implements OnInit{
 
   create(): void {
     console.log(this.routeData);
-    this.routeService.create(this.routeData).subscribe(() => {
-      this.router.navigate(['/admin/route']);
-    });
+    this.routeService.create(this.routeData).subscribe();
+      this.router.navigate(['/admin/routes']);
   }
 
   get routeName() {
