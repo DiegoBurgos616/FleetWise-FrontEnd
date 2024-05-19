@@ -2,6 +2,7 @@ import { User } from './user';
 import { Driver } from './driver';
 
 export interface Route {
+  id?: number;
   routeName: string;
   problemDescription: string;
   comments: string;
