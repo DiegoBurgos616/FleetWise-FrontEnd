@@ -20,14 +20,14 @@ export class RouteService {
 
   getAll(): Observable<Route[]> {
     return this.httpClient.get<Route[]>(
-      `${environment().apiURL}/route`,
+      `${environment().apiURL}/routes`,
       this.httpOptions
     );
   }
 
   create(route: RouteRequest): Observable<Route> {
     return this.httpClient.post<RouteRequest>(
-      `${environment().apiURL}/route`,
+      `${environment().apiURL}/routes`,
       route,
       this.httpOptions
     );
@@ -35,14 +35,14 @@ export class RouteService {
 
   getOne(id: number): Observable<Route> {
     return this.httpClient.get<Route>(
-      `${environment().apiURL}/route/${id}`,
+      `${environment().apiURL}/routes/${id}`,
       this.httpOptions
     );
   }
 
   updateOne(id: number, route: Partial<Route>): Observable<Route> {
     return this.httpClient.put<Route>(
-      `${environment().apiURL}/route/${id}`,
+      `${environment().apiURL}/routes/${id}`,
       route,
       this.httpOptions
     );
@@ -50,7 +50,7 @@ export class RouteService {
 
   delete(id: number): Observable<Route> {
     return this.httpClient.delete<Route>(
-      `${environment().apiURL}/route/${id}`,
+      `${environment().apiURL}/routes/${id}`,
       this.httpOptions
     );
   }
