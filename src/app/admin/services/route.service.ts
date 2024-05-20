@@ -38,7 +38,11 @@ export class RouteService {
   getOne(id: number): Observable<Route> {
     return this.httpClient.get<Route>(
       `${environment().apiURL}/routes/${id}`,
+
       this.getHttpOptions()
+
+
+
     );
   }
 
