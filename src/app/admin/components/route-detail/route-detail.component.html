@@ -1,21 +1,20 @@
-<a 
-  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 white:bg-gray-800 white:border-gray-700 white:hover:bg-gray-700">
-
-  <form [formGroup]="routeDataForm" class="w-full max-w-lg" action="">
+<a class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 white:bg-gray-800 white:border-gray-700 white:hover:bg-gray-700">
+ 
+  <form [formGroup]="routeDataForm" class="w-full max-w-lg" action="" (ngSubmit)="save()">
     <div class="flex flex-wrap -mx-3 mb-6">
 
         <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
         <label for="routeName" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Route</label>
         <input type="text" id="routeName"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
-          formControlName="routeName" required [(ngModel)]="routeData.routeName">
+          formControlName="routeName" required>
       </div>
       
     <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0">
         <label for="problemDescription" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Problem description</label>
         <textarea type="text" rows="4" id="problemDescription"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
-          formControlName="problemDescription" required [(ngModel)]="routeData.problemDescription"></textarea>
+          formControlName="problemDescription" required></textarea>
         </div>
 
 
@@ -25,35 +24,35 @@
         <label for="comments" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Comments</label>
         <textarea type="text" rows="7" id="comments"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
-          formControlName="comments" required [(ngModel)]="routeData.comments"></textarea>
+          formControlName="comments" required></textarea>
       </div>
 
       <div class="w-full md:w-1/1 px-3">
         <label for="startLatitude" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Start latitude</label>
         <input type="number" id="startLatitude"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
-          formControlName="startLatitude" required [(ngModel)]="routeData.startLatitude">
+          formControlName="startLatitude" required>
       </div>
       
       <div class="w-full md:w-1/1 px-3">
         <label for="startLongitude" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Start longitude</label>
         <input type="number" id="startLongitude"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
-          formControlName="startLongitude" required [(ngModel)]="routeData.startLongitude">
+          formControlName="startLongitude" required>
       </div>
 
       <div class="w-full md:w-1/1 px-3">
         <label for="endLatitude" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">End latitude</label>
         <input type="number" id="endLatitude"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
-          formControlName="endLatitude" required [(ngModel)]="routeData.endLatitude">
+          formControlName="endLatitude" required>
       </div>
       
       <div class="w-full md:w-1/1 px-3">
         <label for="endLongitude" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">End longitude</label>
         <input type="number" id="endLongitude"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
-          formControlName="endLongitude" required [(ngModel)]="routeData.endLongitude">
+          formControlName="endLongitude" required>
       </div>
     </div>
     <div class="w-full md:w-1/ px-3 mb-6 md:mb-0">
@@ -61,13 +60,13 @@
       <select id="assignedHistoryId"
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light"
         formControlName="assignedHistoryId" required>
-        <option *ngFor="let assignmentHistoryId of assignmentHistory" [value]="assignmentHistoryId.id">{{ assignmentHistoryId.id }}</option>
+        <option *ngFor="let assignedHistoryId of assignmentHistory" [value]="assignedHistoryId.id">{{ assignedHistoryId.id }}</option>
       </select>
     </div>
 
 
     <div style="text-align: center;">
-      <button type="submit" [disabled]="!routeDataForm.valid" (click)="update()"
+      <button type="submit" [disabled]="!routeDataForm.valid"
               class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center white:bg-blue-600 white:hover:bg-blue-700 white:focus:ring-blue-800">Update</button>
     </div>
 
