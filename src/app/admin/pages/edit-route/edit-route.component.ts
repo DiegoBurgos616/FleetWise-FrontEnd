@@ -17,9 +17,13 @@ export class EditRouteComponent {
 
   ngOnInit(): void {
     const routeId = Number(this.activedRoute.snapshot.paramMap.get('id'));
-    this.routeService.getOne(routeId).subscribe((res) => {
-      this.routeEditable = res;
-    });
+    if (!isNaN(routeId)) {
+      this.routeService.getOne(routeId).subscribe((res) => {
+        this.routeEditable = res;
+      });
+    } else {
+      console.error("Invalid route ID:", routeId);
+    }
   }
 
 }

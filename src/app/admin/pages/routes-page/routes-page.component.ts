@@ -39,11 +39,11 @@ export class RoutesPageComponent {
 
   delete(routeId: number | undefined): void {
     if (routeId) {
-      this.assignmentHistoryService
+      this.routeService
         .delete(routeId)
         .pipe(tap(() => this.getAllRoutes()))
         .subscribe(() => {
-          this.router.navigate(['/admin/route']);
+          this.router.navigate(['/admin/routes']);
         });
     }
   }

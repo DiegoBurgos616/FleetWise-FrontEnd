@@ -9,49 +9,51 @@ import { Route, RouteRequest } from '../models/route';
   providedIn: 'root',
 })
 export class RouteService {
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    }),
-  };
+  private getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+  }
 
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<Route[]> {
     return this.httpClient.get<Route[]>(
-      `${environment().apiURL}/route`,
-      this.httpOptions
+      `${environment().apiURL}/routes`,
+      this.getHttpOptions()
     );
   }
 
   create(route: RouteRequest): Observable<Route> {
     return this.httpClient.post<RouteRequest>(
-      `${environment().apiURL}/route`,
+      `${environment().apiURL}/routes`,
       route,
-      this.httpOptions
+      this.getHttpOptions()
     );
   }
 
   getOne(id: number): Observable<Route> {
     return this.httpClient.get<Route>(
-      `${environment().apiURL}/route/${id}`,
-      this.httpOptions
+      `${environment().apiURL}/routes/${id}`,
+      this.getHttpOptions()
     );
   }
 
-  updateOne(id: number, route: Partial<Route>): Observable<Route> {
+  updateOne(id: number, routes: Partial<Route>): Observable<Route> {
     return this.httpClient.put<Route>(
-      `${environment().apiURL}/route/${id}`,
-      route,
-      this.httpOptions
+      `${environment().apiURL}/routes/${id}`,
+      routes,
+      this.getHttpOptions()
     );
   }
 
   delete(id: number): Observable<Route> {
     return this.httpClient.delete<Route>(
-      `${environment().apiURL}/route/${id}`,
-      this.httpOptions
+      `${environment().apiURL}/routes/${id}`,
+      this.getHttpOptions()
     );
   }
 }

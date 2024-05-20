@@ -1,7 +1,5 @@
-import { User } from './user';
-import { Driver } from './driver';
-
 export interface Route {
+  id?: number;
   routeName: string;
   problemDescription: string;
   comments: string;
@@ -14,7 +12,7 @@ export interface Route {
 
 export type RouteRequest = Omit<Route, 'id'>;
 
-export const initialRouteState: Route= {
+export const initialRouteState: Route = {
   routeName: '',
   problemDescription: '',
   comments: '',

@@ -32,8 +32,8 @@
       </div>
       <div class="w-full md:w-1/1 px-3 mb-6 md:mb-0 mt-4">
         <label for="assignedHistoryId" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Assigned history ID</label>
-        <select id="assignedHistoryId" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light" formControlName="assignedHistoryId" required [(ngModel)]="routeData.assignedHistoryId">
-          <option *ngFor="let assignmentHistoryId of assignmentHistory" [value]="assignmentHistoryId.id">{{ assignmentHistoryId.id }}</option>
+        <select id="assignedHistoryId" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 white:bg-gray-700 white:border-gray-600 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500 white:shadow-sm-light" formControlName="assignedHistoryId" required>
+          <option *ngFor="let assignedHistoryId of assignmentHistory" [value]="assignedHistoryId.id">{{ assignedHistoryId.id }}</option>
         </select>
       </div>
     </div>
