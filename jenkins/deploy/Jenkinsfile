@@ -1,20 +1,9 @@
 pipeline {
     agent any
-    stages {
-        stage('Build, Package & Tag') {
-            steps {
-                withCredentials([file(credentialsId: 'env-vars-frontend-fleetwise', variable: 'env_file')]) {
-                    writeFile file: 'src/assets/.env', text: readFile(env_file)
-                }
-                sh '''BRANCH=$(echo $GIT_BRANCH)
-                docker build -t frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID .'''
-            }
-        }
         stage('Deploy') {
             steps {
                 sh '''BRANCH=$(echo $GIT_BRANCH)
                 docker run --rm --name frontend-fleetwise -d -p 80:80 frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID'''
             }
         }
-    }
 }
