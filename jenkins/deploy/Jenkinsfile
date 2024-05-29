@@ -1,19 +1,34 @@
 pipeline {
     agent any
+    
+    parameters {
+        string(name: 'BUILD_NUMBER', defaultValue: '', description: 'Número de construcción de la imagen a desplegar')
+        string(name: 'GIT_BRANCH', defaultValue: '', description: 'Rama Git de la imagen a desplegar')
+    }
+
+    environment {
+        DOCKER_IMAGE_NAME = "frontend-fleetwise-${params.GIT_BRANCH}:1.0.0-${params.BUILD_NUMBER}"
+        CONTAINER_NAME = "frontend-fleetwise"
+    }
+
     stages {
-        stage('Build, Package & Tag') {
+        stage('Detener Contenedor Existente') {
             steps {
-                withCredentials([file(credentialsId: 'env-vars-frontend-fleetwise', variable: 'env_file')]) {
-                    writeFile file: 'src/assets/.env', text: readFile(env_file)
+                script {
+                    if (sh(script: "docker ps -a --format '{{.Names}}' | grep -q '^${CONTAINER_NAME}\$'", returnStatus: true) == 0) {
+                        sh "docker stop ${CONTAINER_NAME}"
+                        sh "docker rm ${CONTAINER_NAME}"
+                    }
                 }
-                sh '''BRANCH=$(echo $GIT_BRANCH)
-                docker build -t frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID .'''
             }
         }
-        stage('Deploy') {
+
+        stage('Ejecutar Contenedor Docker') {
             steps {
-                sh '''BRANCH=$(echo $GIT_BRANCH)
-                docker run --rm --name frontend-fleetwise -d -p 80:80 frontend-fleetwise-$BRANCH:1.0.0-$BUILD_ID'''
+                script {
+                    echo "Usando la imagen Docker: ${env.DOCKER_IMAGE_NAME}"
+                    sh "docker run --rm --detach --name ${CONTAINER_NAME} -p 80:80 ${DOCKER_IMAGE_NAME}"
+                }
             }
         }
     }

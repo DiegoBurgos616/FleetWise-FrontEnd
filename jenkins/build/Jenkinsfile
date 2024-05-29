@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'BUILD_NUMBER', defaultValue: '', description: 'Número de construcción de la imagen a construir')
+        string(name: 'GIT_BRANCH', defaultValue: '', description: 'Rama Git de la imagen a construir')
+    }
+
+    environment {
+        DOCKER_IMAGE_NAME = "frontend-fleetwise-${params.GIT_BRANCH}:1.0.0-${params.BUILD_NUMBER}"
+        CONTAINER_NAME = "frontend_fleetwise"
+    }
+
+    stages {
+        stage('Detener Contenedor Existente') {
+            steps {
+                script {
+                    if (sh(script: "docker ps -a --format '{{.Names}}' | grep -q '^${env.CONTAINER_NAME}\$'", returnStatus: true) == 0) {
+                        sh "docker stop ${env.CONTAINER_NAME}"
+                        sh "docker rm ${env.CONTAINER_NAME}"
+                    }
+                }
+            }
+        }
+
+        stage('Construir Imagen Docker') {
+            steps {
+                script {
+                    withCredentials([file(credentialsId: 'env-vars-frontend-fleetwise', variable: 'env_file')]) {
+                        writeFile file: 'src/assets/.env', text: readFile(env_file)
+                    }
+                    sh "docker build -t ${env.DOCKER_IMAGE_NAME} ."
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            script {
+                // Desencadenar el trabajo de despliegue y pasar el BUILD_NUMBER y GIT_BRANCH
+                build job: 'fleetwise-frontend-deploy', parameters: [
+                    string(name: 'BUILD_NUMBER', value: "${params.BUILD_NUMBER}"),
+                    string(name: 'GIT_BRANCH', value: "${params.GIT_BRANCH}")
+                ]
+            }
+        }
+
+        cleanup {
+            cleanWs()
+        }
+    }
+}
