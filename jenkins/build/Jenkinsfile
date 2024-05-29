@@ -1,13 +1,8 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'BUILD_NUMBER', defaultValue: '', description: 'Número de construcción de la imagen a construir')
-        string(name: 'GIT_BRANCH', defaultValue: '', description: 'Rama Git de la imagen a construir')
-    }
-
     environment {
-        DOCKER_IMAGE_NAME = "frontend-fleetwise-${params.GIT_BRANCH}:1.0.0-${params.BUILD_NUMBER}"
+        DOCKER_IMAGE_NAME = "frontend-fleetwise-${env.GIT_BRANCH}:1.0.0-${env.BUILD_NUMBER}"
         CONTAINER_NAME = "frontend_fleetwise"
     }
 
@@ -38,7 +33,6 @@ pipeline {
     post {
         success {
             script {
-                // Desencadenar el trabajo de despliegue y pasar el BUILD_NUMBER y GIT_BRANCH
                 build job: 'fleetwise-frontend-deploy', parameters: [
                     string(name: 'BUILD_NUMBER', value: "${params.BUILD_NUMBER}"),
                     string(name: 'GIT_BRANCH', value: "${params.GIT_BRANCH}")

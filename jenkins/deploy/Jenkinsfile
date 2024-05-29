@@ -6,18 +6,13 @@ pipeline {
         string(name: 'GIT_BRANCH', defaultValue: '', description: 'Rama Git de la imagen a desplegar')
     }
 
-    environment {
-        DOCKER_IMAGE_NAME = "frontend-fleetwise-${params.GIT_BRANCH}:1.0.0-${params.BUILD_NUMBER}"
-        CONTAINER_NAME = "frontend-fleetwise"
-    }
-
     stages {
         stage('Detener Contenedor Existente') {
             steps {
                 script {
-                    if (sh(script: "docker ps -a --format '{{.Names}}' | grep -q '^${CONTAINER_NAME}\$'", returnStatus: true) == 0) {
-                        sh "docker stop ${CONTAINER_NAME}"
-                        sh "docker rm ${CONTAINER_NAME}"
+                    if (sh(script: "docker ps -a --format '{{.Names}}' | grep -q '^${params.CONTAINER_NAME}\$'", returnStatus: true) == 0) {
+                        sh "docker stop ${params.CONTAINER_NAME}"
+                        sh "docker rm ${params.CONTAINER_NAME}"
                     }
                 }
             }
@@ -26,8 +21,8 @@ pipeline {
         stage('Ejecutar Contenedor Docker') {
             steps {
                 script {
-                    echo "Usando la imagen Docker: ${env.DOCKER_IMAGE_NAME}"
-                    sh "docker run --rm --detach --name ${CONTAINER_NAME} -p 80:80 ${DOCKER_IMAGE_NAME}"
+                    echo "Usando la imagen Docker: ${params.DOCKER_IMAGE_NAME}"
+                    sh "docker run --rm --detach --name ${params.CONTAINER_NAME} -p 80:80 ${params.DOCKER_IMAGE_NAME}"
                 }
             }
         }
