@@ -1,13 +1,9 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'BUILD_NUMBER', defaultValue: '', description: 'Número de construcción de la imagen a construir')
-        string(name: 'GIT_BRANCH', defaultValue: '', description: 'Rama Git de la imagen a construir')
-    }
 
     environment {
-        DOCKER_IMAGE_NAME = "frontend-fleetwise-${params.GIT_BRANCH}:1.0.0-${params.BUILD_NUMBER}"
+        DOCKER_IMAGE_NAME = "frontend-fleetwise-${GIT_BRANCH}:1.0.0-${BUILD_NUMBER}"
         CONTAINER_NAME = "fleetwise_frontend"
         REMOTE_HOST = "root@212.227.239.95"
     }
