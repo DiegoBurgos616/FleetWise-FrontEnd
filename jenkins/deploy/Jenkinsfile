@@ -9,25 +9,46 @@ pipeline {
     environment {
         DOCKER_IMAGE_NAME = "frontend-fleetwise-${params.GIT_BRANCH}:1.0.0-${params.BUILD_NUMBER}"
         CONTAINER_NAME = "fleetwise_frontend"
+        REMOTE_HOST = "root@212.227.239.95"
     }
- 
+
     stages {
-        stage('Detener Contenedor Existente') {
+        stage('Detener Contenedor Existente en Remoto') {
             steps {
                 script {
-                    if (sh(script: "docker ps -a --format '{{.Names}}' | grep -q '^${params.CONTAINER_NAME}\$'", returnStatus: true) == 0) {
-                        sh "docker stop ${params.CONTAINER_NAME}"
-                        sh "docker rm ${params.CONTAINER_NAME}"
+                    sshagent(['miniserver-ssh-key']) {
+                        sh """
+                            ssh ${env.REMOTE_HOST} '
+                            if docker ps -a --format "{{.Names}}" | grep -q "^${env.CONTAINER_NAME}\$"; then
+                                docker stop ${env.CONTAINER_NAME}
+                                docker rm ${env.CONTAINER_NAME}
+                            fi'
+                        """
                     }
                 }
             }
         }
 
-        stage('Ejecutar Contenedor Docker') {
+        stage('Subir Imagen Docker a Servidor Remoto') {
             steps {
                 script {
-                    echo "Usando la imagen Docker: ${env.DOCKER_IMAGE_NAME}"
-                    sh "docker run --rm --detach --name ${CONTAINER_NAME} -p 80:80 ${DOCKER_IMAGE_NAME}"
+                    sshagent(['miniserver-ssh-key']) {
+                        sh "docker save ${env.DOCKER_IMAGE_NAME} | bzip2 | ssh ${env.REMOTE_HOST} 'bunzip2 | docker load'"
+                    }
+                }
+            }
+        }
+
+        stage('Ejecutar Contenedor Docker en Remoto') {
+            steps {
+                script {
+                    sshagent(['miniserver-ssh-key']) {
+                        echo "Usando la imagen Docker: ${env.DOCKER_IMAGE_NAME}"
+                        sh """
+                            ssh ${env.REMOTE_HOST} '
+                            docker run --rm --detach --name ${env.CONTAINER_NAME} -p 80:80 ${env.DOCKER_IMAGE_NAME}'
+                        """
+                    }
                 }
             }
         }

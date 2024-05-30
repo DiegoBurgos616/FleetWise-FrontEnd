@@ -1,18 +1,29 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'BUILD_NUMBER', defaultValue: '', description: 'Número de construcción de la imagen a construir')
+        string(name: 'GIT_BRANCH', defaultValue: '', description: 'Rama Git de la imagen a construir')
+    }
+
     environment {
-        DOCKER_IMAGE_NAME = "frontend-fleetwise-${env.GIT_BRANCH}:1.0.0-${env.BUILD_NUMBER}"
-        CONTAINER_NAME = "frontend_fleetwise"
+        DOCKER_IMAGE_NAME = "frontend-fleetwise-${params.GIT_BRANCH}:1.0.0-${params.BUILD_NUMBER}"
+        CONTAINER_NAME = "fleetwise_frontend"
+        REMOTE_HOST = "root@212.227.239.95"
     }
 
     stages {
-        stage('Detener Contenedor Existente') {
+        stage('Detener Contenedor Existente en Remoto') {
             steps {
                 script {
-                    if (sh(script: "docker ps -a --format '{{.Names}}' | grep -q '^${env.CONTAINER_NAME}\$'", returnStatus: true) == 0) {
-                        sh "docker stop ${env.CONTAINER_NAME}"
-                        sh "docker rm ${env.CONTAINER_NAME}"
+                    sshagent(['miniserver-ssh-key']) {
+                        sh """
+                            ssh ${env.REMOTE_HOST} '
+                            if docker ps -a --format "{{.Names}}" | grep -q "^${env.CONTAINER_NAME}\$"; then
+                                docker stop ${env.CONTAINER_NAME}
+                                docker rm ${env.CONTAINER_NAME}
+                            fi'
+                        """
                     }
                 }
             }
@@ -28,16 +39,42 @@ pipeline {
                 }
             }
         }
+
+        stage('Subir Imagen a Servidor Remoto') {
+            steps {
+                script {
+                    sshagent(['miniserver-ssh-key']) {
+                        sh "docker save ${env.DOCKER_IMAGE_NAME} | bzip2 | ssh ${env.REMOTE_HOST} 'bunzip2 | docker load'"
+                    }
+                }
+            }
+        }
+
+        stage('Ejecutar Contenedor Docker en Remoto') {
+            steps {
+                script {
+                    sshagent(['miniserver-ssh-key']) {
+                        sh """
+                            ssh ${env.REMOTE_HOST} '
+                            docker run --rm --detach --name ${env.CONTAINER_NAME} -p 80:80 ${env.DOCKER_IMAGE_NAME}'
+                        """
+                    }
+                }
+            }
+        }
     }
 
     post {
         success {
             script {
                 build job: 'fleetwise-frontend-deploy', parameters: [
-                    string(name: 'BUILD_NUMBER', value: "${env.BUILD_NUMBER}"),
-                    string(name: 'GIT_BRANCH', value: "${env.GIT_BRANCH}")
+                    string(name: 'BUILD_NUMBER', value: "${params.BUILD_NUMBER}"),
+                    string(name: 'GIT_BRANCH', value: "${params.GIT_BRANCH}")
                 ]
             }
+        }
+        cleanup {
+            cleanWs()
         }
     }
 }
