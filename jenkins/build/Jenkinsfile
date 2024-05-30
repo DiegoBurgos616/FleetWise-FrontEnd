@@ -60,17 +60,5 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            script {
-                build job: 'fleetwise-frontend-deploy', parameters: [
-                    string(name: 'BUILD_NUMBER', value: "${params.BUILD_NUMBER}"),
-                    string(name: 'GIT_BRANCH', value: "${params.GIT_BRANCH}")
-                ]
-            }
-        }
-        cleanup {
-            cleanWs()
-        }
-    }
+    
 }
